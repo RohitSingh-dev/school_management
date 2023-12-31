@@ -1,0 +1,28 @@
+.registerForm{
+    color: #fff;
+    text-align: center;
+}
+.registerForm-buttons input{
+    margin: 20px;
+}
+.registerForm-label{
+    margin-top: 20px;
+}
+.registerForm-fieldset{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color:#282828;
+    width: 320px;
+    height: 410px;
+}
+.registerForm-legend{
+    margin-top: 15px;
+    font-size: 30px;
+}
+.registerForm-login a{
+    color: red;
+}
+.registerForm-dropdown{
+    margin-top: 20px;
+}

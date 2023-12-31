@@ -1,0 +1,25 @@
+.login-form{
+    color: #fff;
+    text-align: center;
+}
+.login-form-buttons input{
+    margin: 20px;
+}
+.login-form-label{
+    margin-top: 20px;
+}
+.login-form-fieldset{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color:#282828;
+    width: 300px;
+    height: 350px;
+}
+.login-form-legend{
+    margin-top: 25px;
+    font-size: 30px;
+}
+.login-form-register a{
+    color: red;
+}
