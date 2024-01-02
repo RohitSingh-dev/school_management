@@ -13,21 +13,24 @@ const Navbar = () => {
             </div>
           </div>
           <div className='navbar-name'>
-            <h2>School Management<br></br>System</h2>
+            <h3>School Management<br></br>System</h3>
           </div>
         </div>
         <div className='navbar-top-middle'>
           <div>
-            <a href="#Home">Home</a>
+            <a className='navbar-top-middle-home' href="#Home">Home</a>
           </div>
           <div>
-            <a href="#About Us">About Us</a>
+            <a href="#About Us">About us</a>
           </div>
           <div>
-            <a href="#Attendance">Attendance</a>
+            <a href="#Classes">Classes</a>
           </div>
           <div>
-            <a href="#Result">Result</a>
+            <a href="#Teachers">Teachers</a>
+          </div>
+          <div>
+            <a href="#ContactUs">Contact us</a>
           </div>
         </div>
         <div className='navbar-top-right'>

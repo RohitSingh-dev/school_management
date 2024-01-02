@@ -4,3 +4,4 @@ export {default as LoginForm} from './loginForm/LoginForm';
 export {default as WelcomeBar} from './welcomeBar/WelcomeBar';
 export {default as RegisterForm} from './registerForm/RegisterForm';
 export {default as Dashboard} from './dashboard/Dashboard';
+export {default as Homepage} from './homepage/Homepage';

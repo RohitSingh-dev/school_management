@@ -1,8 +1,11 @@
+.dashboard{
+    background-image: url('../../assets/compute-ea4c57a4.png');
+}
 .dashboard-middle{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 50px 80px;
+    padding: 150px 80px;
 }
 .dashboard-middle-icon-wrapper{
     display: flex;
@@ -10,17 +13,19 @@
     align-items: center;
 }
 .dashboard-middle-icon-wrapper a{
+    text-decoration: none;
     padding: 25px;
 }
 .dashboard-middle-icon-wrapper a:hover{
-    border: 2px solid black;
+    border: 2px solid #fff;
 }
 .dashboard-middle-icons{
     font-size: 80px;
     padding: 25px;
-    background-color: aqua;
+    color: #fff;
 }
 .dashboard-middle-text{
+    color: #fff;
     padding: 0px 0px;
     justify-content: center;
     text-align: center;

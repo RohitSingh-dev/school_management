@@ -1,48 +1,55 @@
 .navbar{
-    background-color: brown;
+    background-color: #fff;
 }
 .navbar-top{
     display: flex;
     justify-content: space-between;
     margin-left: 20px;
-    margin-right: 20px;
+    margin-right: 40px;
     align-items: center;
 }
 .navbar-top-middle{
     display: flex;
-    font-size: 35px;
+    font-size: 20px;
     font-weight: 600;
 }
 .navbar-top-left{
     display: flex;
-    font-size: 30px;
+    font-size: 25px;
 }
 .navbar-logo{
     display: flex;
     align-items: center;
 }
 .navbar-logo img{
-    width: 130px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
 }
 .navbar-name{
     display: flex;
     margin-left: 30px;
 }
+.navbar-top-middle-home{
+    color: red !important;
+}
 .navbar-top-middle a{
     padding: 20px;
     text-decoration: none;
-    color: aliceblue;
+    color: black;
 }
 .navbar-top-middle a:hover{
-    color: blue;
+    color: red;
 }
 .login-button{
-    font-size: 40px;
-    padding: 15px 30px;
-    border-radius: 25px;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: darkorange;
 }
 .login-button a{
     text-decoration: none;
-    color: blue;
+    color: #fff;
+}
+.login-button:hover{
+    background-color: orange;
 }

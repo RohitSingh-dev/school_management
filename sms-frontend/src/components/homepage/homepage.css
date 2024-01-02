@@ -1,0 +1,38 @@
+.homepage{
+    display: flex;
+    flex-direction: column;
+    background-image: url(../../assets/compute-ea4c57a4.png);
+}
+.homepage-middle{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 150px 80px;
+}
+.homepage-middle-c1{
+    color: darkorange;
+}
+.homepage-middle-c2{
+    color: #fff;
+    font-size: 30px;
+    line-height: 0;
+}
+.homepage-middle-c3{
+    color: #fff;
+    text-align: right;
+}
+.homepage-middle-c4 button{
+    background-color: transparent;
+    border: 0;
+    margin-top: 30px;
+}
+.homepage-middle-c4 a{
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: crimson;
+    color: #fff;
+}
+.homepage-middle-c4 a:hover{
+    background-color: red;
+}

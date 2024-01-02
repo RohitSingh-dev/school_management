@@ -1,8 +1,7 @@
 .welcome{
-    background-color: brown;
+    background-color: #fff;
     display: flex;
     justify-content: space-between;
-    padding: 0px 20px;
     align-items: center;
 }
 .welcome-middle{
@@ -13,25 +12,31 @@
 .welcome-left{
     display: flex;
     font-size: 30px;
+    margin-left: 20px;
 }
 .welcome-logo{
     display: flex;
     align-items: center;
 }
 .welcome-logo img{
-    width: 130px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
 }
 .welcome-name{
     display: flex;
     margin-left: 30px;
 }
 .welcome-logout-button{
-    font-size: 40px;
-    padding: 15px 30px;
-    border-radius: 25px;
+    margin-right: 40px;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: darkorange;
 }
 .welcome-logout-button a{
     text-decoration: none;
-    color: blue;
+    color: #fff;
+}
+.welcome-logout-button:hover{
+    background-color:orange;
 }

@@ -23,3 +23,7 @@
 .login-form-register a{
     color: red;
 }
+.login-form-message{
+    color: red;
+    background-color: #fff;
+}

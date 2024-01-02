@@ -12,10 +12,10 @@ const welcomeBar = ({username}) => {
             </div>
           </div>
           <div className='welcome-name'>
-            <h2>School Management<br></br>System</h2>
+            <h3>School Management<br></br>System</h3>
           </div>
         </div>
-        <div className='welcome-middle'>Welcome {username}!!</div>
+        <div className='welcome-middle'>Welcome, {username}!!</div>
         <div className='welcome-right'>
           <div>
           <button className='welcome-logout-button' onClick=''><a href='#logout'>Logout</a></button>
