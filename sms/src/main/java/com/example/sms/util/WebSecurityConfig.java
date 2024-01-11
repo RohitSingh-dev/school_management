@@ -38,8 +38,9 @@ public class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity, AuthenticationManager authenticationManager)
             throws Exception {
 
-        httpSecurity.csrf(csrf -> csrf.disable()).authorizeRequests().requestMatchers(HttpMethod.POST, "/login")
-                .permitAll()
+        httpSecurity.csrf(csrf -> csrf.disable())
+        .authorizeRequests().requestMatchers(HttpMethod.POST, "/login")
+                .permitAll().requestMatchers(HttpMethod.POST, "/register").permitAll()
                 .requestMatchers(HttpMethod.GET, "/student/**").hasAuthority("STUDENT")
                 .requestMatchers(HttpMethod.GET, "/teacher/**").hasAuthority("TEACHER")
                 .requestMatchers(HttpMethod.POST, "/attendance").hasAuthority("TEACHER")

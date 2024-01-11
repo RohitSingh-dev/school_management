@@ -1,15 +1,19 @@
 import React from 'react';
 import './App.css';
 import { LoginForm, RegisterForm, Dashboard, Homepage} from './components';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const App = () => {
   return (
-    <div>
-      <LoginForm></LoginForm>
-      <RegisterForm></RegisterForm>
-      <Dashboard></Dashboard>
-      <Homepage></Homepage>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/register" element={<RegisterForm />} />
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </BrowserRouter>
+
   )
 }
 

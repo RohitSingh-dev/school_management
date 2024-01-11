@@ -1,6 +1,5 @@
 import React from 'react';
 import './footer.css';
-import LoginForm from '../loginForm/LoginForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faYoutube, faInstagram, faTwitter, faFacebookF, faLinkedinIn} from '@fortawesome/free-brands-svg-icons';
 
@@ -25,10 +24,10 @@ const Footer = () => {
               </div>
               <div className='footer-top-v2-links'>
                 <ul>
-                  <li><div><a href='#About Us'>About Us</a></div></li>
-                  <li><div><a href='#Attendance'>Attendace</a></div></li>
-                  <li><div><a href='#Result'>Result</a></div></li>
-                  <li><div><a href='#Notice'>Notice</a></div></li>
+                  <li><div><a href='/AboutUs'>About Us</a></div></li>
+                  <li><div><a href='/Attendance'>Attendace</a></div></li>
+                  <li><div><a href='/Result'>Result</a></div></li>
+                  <li><div><a href='/Notice'>Notice</a></div></li>
                 </ul>
               </div>
             </div>
@@ -36,8 +35,13 @@ const Footer = () => {
               <div className='footer-top-v3-heading'>
                 <p><h2>Quick Login</h2></p>
               </div>
-              <div className='footer-top-v3-login'>
-                <LoginForm></LoginForm>
+              <div className='footer-top-v3-input'>
+                <input type='email' placeholder='Email*' />
+                <br />
+                <input type='password' placeholder='Password*' />
+              </div>
+              <div className='footer-top-v3-button'>
+                <button onClick=''>Login</button>
               </div>
             </div>
         </div>

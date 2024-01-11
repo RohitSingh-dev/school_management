@@ -29,6 +29,22 @@
     flex-direction: column;
     text-align: center;
 }
+.footer-top-v3-input input{
+    width: 200px;
+    height: 30px;
+    margin: 15px;
+    color: #fff;
+    background-color: #282828;
+    border: none;
+}
+.footer-top-v3-button button{
+    font-size: 24px;
+    margin-top: 20px;
+    padding: 10px 30px;
+    background-color: #2d5fde;
+    color: #fff;
+    border: none;
+}
 .footer-top-v1-address{
     line-height: 30px;
 }

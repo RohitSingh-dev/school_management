@@ -8,17 +8,15 @@ const LoginForm = () => {
   let handleSubmit = async (e)=> {
     e.preventDefault();
     try{
-      let res = await fetch("http://localhost:8080/login",{
+      let res = await fetch("/login",{
         method: "POST",
         body: JSON.stringify({
-          email: email,
+          username: email,
           password: password,
         }),
-        headers: {'Content-Type': 'application/json', 
-      'ACCEPT': 'application/json'},
-        mode: 'no-cors'
+        headers: {'Content-Type': 'application/json'},
       });
-      let resJSON = await res.json;
+      let resJSON = await res.text();
       if(res.status===200){
         console.log(resJSON);
         setEmail("");
@@ -37,14 +35,15 @@ const LoginForm = () => {
     <div className='login-form'>
       <form onSubmit={handleSubmit}>
         <fieldset className='login-form-fieldset'>
+          <div className='login-form-close-btn'>&times;</div>
           <div className='login-form-legend'><b>User Login</b></div>
           <div className='login-form-label'>
-            <label for="email">Email Id</label><br></br>
-            <input type="email" id="email" name="email" placeholder="Enter email" value={email} onChange={(e)=> setEmail(e.target.value)} required></input><br></br>
+            <label>Email Id</label><br></br>
+            <input type="email" placeholder="Enter email" value={email} onChange={(e)=> setEmail(e.target.value)} required></input><br></br>
           </div>
           <div className='login-form-label'>
-            <label for="password">Password</label><br></br>
-            <input type="password" id="password" name="password" placeholder="Password" value={password} onChange={(e)=> setPassword(e.target.value)} required></input>
+            <label>Password</label><br></br>
+            <input type="password" placeholder="Password" value={password} onChange={(e)=> setPassword(e.target.value)} required></input>
           </div>
           <div className='login-form-buttons'>
             <input type="reset" value="RESET"></input>
@@ -54,7 +53,7 @@ const LoginForm = () => {
             {message ? <p>{message}</p> : null}
           </div>
           <div className='login-form-register'>
-            <p>New User? <a href='#register'>Register here</a></p>
+            <p>New User? <a href='/register'>Register here</a></p>
           </div>
         </fieldset>
       </form>

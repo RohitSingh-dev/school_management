@@ -21,7 +21,7 @@ const Navbar = () => {
             <a className='navbar-top-middle-home' href="#Home">Home</a>
           </div>
           <div>
-            <a href="#About Us">About us</a>
+            <a href="#AboutUs">About us</a>
           </div>
           <div>
             <a href="#Classes">Classes</a>
@@ -35,7 +35,7 @@ const Navbar = () => {
         </div>
         <div className='navbar-top-right'>
           <div>
-            <button className='login-button' onClick=''><a href='#login'>Login</a></button>
+            <button className='login-button' onClick=''><a href='/login'>Login</a></button>
           </div>
         </div>
       </div>

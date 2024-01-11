@@ -4,7 +4,7 @@ public enum UserType {
     
     STUDENT,PARENT,TEACHER,ADMIN;
 
-    public UserType getUserType(String name){
+    public static UserType getUserType(String name){
         switch (name) {
             case "STUDENT":
                 return UserType.STUDENT;

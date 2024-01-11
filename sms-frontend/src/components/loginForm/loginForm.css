@@ -4,17 +4,25 @@
 }
 .login-form-buttons input{
     margin: 20px;
+    font-size: 15px;
+    cursor: pointer;
 }
 .login-form-label{
     margin-top: 20px;
 }
 .login-form-fieldset{
-    display: flex;
     flex-direction: column;
     padding: 20px;
     background-color:#282828;
     width: 300px;
     height: 350px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.15);
 }
 .login-form-legend{
     margin-top: 25px;
@@ -25,5 +33,13 @@
 }
 .login-form-message{
     color: red;
-    background-color: #fff;
+    margin-top: -20px;
+}
+.login-form-close-btn{
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 20px;
+    color: red;
+    cursor: pointer;
 }
