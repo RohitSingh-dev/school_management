@@ -1,0 +1,17 @@
+.classes{
+    display: flex;
+    flex-direction: column;
+}
+.classes-middle-top{
+    display: flex;
+    flex-direction: column;
+    background-image: linear-gradient(to right, red, aqua);
+    color: #fff;
+    height: 150px;
+    padding-left: 35px;
+    justify-content: center;
+}
+.classes-middle-top h1{
+    font-size: 40px;
+    margin: 0;
+}

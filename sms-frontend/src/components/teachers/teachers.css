@@ -1,0 +1,28 @@
+.teachers{
+    display: flex;
+    flex-direction: column;
+}
+.teachers-middle-top{
+    display: flex;
+    flex-direction: column;
+    background-image: linear-gradient(to right, red, aqua);
+    color: #fff;
+    height: 150px;
+    padding-left: 35px;
+    justify-content: center;
+}
+.teachers-middle-top h1{
+    font-size: 40px;
+    margin: 0;
+}
+.teachers-middle-bottom-teacher{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+.carousel-container{
+    width: 1020px;
+}
+.carousel-item{
+    padding: 0px;
+}

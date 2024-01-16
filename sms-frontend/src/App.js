@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { LoginForm, RegisterForm, Dashboard, Homepage} from './components';
+import { LoginForm, RegisterForm, Dashboard, Homepage, AboutUs, ContactUs, Teachers, Classes} from './components';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const App = () => {
@@ -11,6 +11,10 @@ const App = () => {
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/AboutUs" element={<AboutUs />} />
+        <Route path="/ContactUs" element={<ContactUs />} />
+        <Route path="/Teachers" element={<Teachers />} />
+        <Route path="/Classes" element={<Classes />} />
       </Routes>
     </BrowserRouter>
 

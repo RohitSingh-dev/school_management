@@ -18,19 +18,19 @@ const Navbar = () => {
         </div>
         <div className='navbar-top-middle'>
           <div>
-            <a className='navbar-top-middle-home' href="#Home">Home</a>
+            <a className='navbar-top-middle-home' href="/">Home</a>
           </div>
           <div>
-            <a href="#AboutUs">About us</a>
+            <a href="/AboutUs">About us</a>
           </div>
           <div>
-            <a href="#Classes">Classes</a>
+            <a href="/Classes">Classes</a>
           </div>
           <div>
-            <a href="#Teachers">Teachers</a>
+            <a href="/Teachers">Teachers</a>
           </div>
           <div>
-            <a href="#ContactUs">Contact us</a>
+            <a href="/ContactUs">Contact us</a>
           </div>
         </div>
         <div className='navbar-top-right'>

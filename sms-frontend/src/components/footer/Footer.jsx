@@ -25,9 +25,9 @@ const Footer = () => {
               <div className='footer-top-v2-links'>
                 <ul>
                   <li><div><a href='/AboutUs'>About Us</a></div></li>
-                  <li><div><a href='/Attendance'>Attendace</a></div></li>
-                  <li><div><a href='/Result'>Result</a></div></li>
-                  <li><div><a href='/Notice'>Notice</a></div></li>
+                  <li><div><a href='/Classes'>Classes</a></div></li>
+                  <li><div><a href='/Teachers'>Teachers</a></div></li>
+                  <li><div><a href='/ContactUs'>Contact Us</a></div></li>
                 </ul>
               </div>
             </div>

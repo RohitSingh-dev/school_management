@@ -1,0 +1,15 @@
+.teacherInfo{
+    display: flex;
+    flex-direction: column;
+}
+.teacherInfo-heading-decoration1{
+    height: 2px;
+    width: 180px;
+    background-color: red;
+}
+.teacherInfo-heading-decoration2{
+    height: 5px;
+    width: 90px;
+    background-color: red;
+    margin-top: -4px;
+}

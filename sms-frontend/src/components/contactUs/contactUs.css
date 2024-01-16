@@ -1,0 +1,35 @@
+.contactUs{
+    display: flex;
+    flex-direction: column;
+}
+.contactUs-middle-top{
+    display: flex;
+    flex-direction: column;
+    background-image: linear-gradient(to right, red, aqua);
+    color: #fff;
+    height: 150px;
+    padding-left: 35px;
+    justify-content: center;
+}
+.contactUs-middle-top h1{
+    font-size: 40px;
+    margin: 0;
+}
+.contactUs-middle-middle{
+    margin-left: 35px;
+}
+.contactUs-middle-bottom{
+    display: flex;
+}
+.contactUs-middle-bottom-r1{
+    padding: 35px;
+}
+.contactUs-middle-bottom-r2{
+    padding: 35px 75px;
+}
+.contactUs-middle-middle-c1 iframe{
+    padding: 40px 0px;
+    width: 800px;
+    height: 300px;
+    border: 0;
+}

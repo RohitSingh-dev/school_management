@@ -44,6 +44,7 @@
     background-color: #2d5fde;
     color: #fff;
     border: none;
+    cursor: pointer;
 }
 .footer-top-v1-address{
     line-height: 30px;
