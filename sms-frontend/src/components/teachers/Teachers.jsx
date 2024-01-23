@@ -32,7 +32,7 @@ const Teachers = () => {
           </div>
           <div className='teachers-middle-bottom'>
             <div className='teachers-middle-bottom-teacher'>
-              <Carousel swipeable={true} draggable={false} showDots={true} ssr={true} infinite={true} autoPlay={true} autoPlaySpeed={3000} keyBoardControl={true} itemClass='carousel-item' customTransition="all .5" transitionDuration={1000} responsive={responsive} deviceType='desktop' containerClass="carousel-container" renderButtonGroupOutside={false}>
+              <Carousel swipeable={true} draggable={false} showDots={true} ssr={true} infinite={true} autoPlay={true} autoPlaySpeed={3000} keyBoardControl={true} itemClass='carousel-item' customTransition="all .5" transitionDuration={500} responsive={responsive} deviceType='desktop' containerClass="carousel-container">
                 <div><TeacherInfoClasses image={teacher1} teacherName='Mrs. Bidisha Roy' teacherDesignation='(Professor)' workExperience='5 Years' areaOfInterest='English, History' qualification='M.Tech'></TeacherInfoClasses></div>
                 <div><TeacherInfoClasses image={teacher2} teacherName='Dr. Sujit Singh' teacherDesignation='(Professor)' workExperience='16 Years' areaOfInterest='Computer Science' qualification='PHD'></TeacherInfoClasses></div>
                 <div><TeacherInfoClasses image={teacher3} teacherName='Mr. Prasenjit Maji' teacherDesignation='(Professor)' workExperience='12 Years' areaOfInterest='Science, GK' qualification='B.Ed'></TeacherInfoClasses></div>

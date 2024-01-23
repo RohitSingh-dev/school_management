@@ -19,7 +19,7 @@ const Homepage = () => {
                 <p>Engaging all students in partnership with family and community<br></br>to become informed, compassionate, global citizens.</p>
             </div>
             <div className='homepage-middle-c4'>
-                <button><a href='#learnmore'>Learn more</a></button>
+                <button><a href='/AboutUs'>Learn more</a></button>
             </div>
         </div>
         <div className='homepage-footer'>

@@ -2,8 +2,12 @@ import React from 'react';
 import './footer.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faYoutube, faInstagram, faTwitter, faFacebookF, faLinkedinIn} from '@fortawesome/free-brands-svg-icons';
+import { LoginForm } from '..';
 
 const Footer = () => {
+  let handleSubmit =() =>{
+    new LoginForm().handleSubmit();
+  }
   return (
     <div className='footer'>
         <div className='footer-top'>
@@ -32,17 +36,19 @@ const Footer = () => {
               </div>
             </div>
             <div className='footer-top-v3'>
-              <div className='footer-top-v3-heading'>
-                <p><h2>Quick Login</h2></p>
-              </div>
-              <div className='footer-top-v3-input'>
-                <input type='email' placeholder='Email*' />
-                <br />
-                <input type='password' placeholder='Password*' />
-              </div>
-              <div className='footer-top-v3-button'>
-                <button onClick=''>Login</button>
-              </div>
+              <form onSubmit={handleSubmit}>
+                <div className='footer-top-v3-heading'>
+                  <p><h2>Quick Login</h2></p>
+                </div>
+                <div className='footer-top-v3-input'>
+                  <input type='email' placeholder='Email*' />
+                  <br />
+                  <input type='password' placeholder='Password*' />
+                </div>
+                <div className='footer-top-v3-button'>
+                  <input type="submit" value="Submit"></input>
+                </div>
+              </form>
             </div>
         </div>
         <div className='footer-bottom'>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './registerForm.css';
 
-const RegisterForm = () => {
+const RegisterForm = (props) => {
   const [email, setEmail]= useState("");
   const [password, setPassword]= useState("");
   const [confirmpassword, setConfirmpassword]= useState("");
@@ -47,8 +47,9 @@ const RegisterForm = () => {
   return (
     <div className='registerForm'>
       <form onSubmit={handleSubmit}>
+        <div className='registerForm-background'>
         <fieldset className='registerForm-fieldset'>
-          <div className='registerForm-close-btn'>&times;</div>
+          <div className='registerForm-close-btn' onClick={props.toggle}>&times;</div>
           <div className='registerForm-legend'><b>Register Here</b></div>
           <div className='registerForm-label'>
             <label for="email">Email Id</label><br></br>
@@ -72,15 +73,16 @@ const RegisterForm = () => {
           </div>
           <div className='registerForm-buttons'>
             <input type="reset" value="RESET"></input>
-            <input type="submit" value="REGISTER"></input>
+            <input className='registerForm-buttons-submit' type="submit" value="REGISTER"></input>
           </div>
           <div className='registerForm-message'>
             {message ? <p id='message'>{message}</p> : null}
           </div>
           <div className='registerForm-login'>
-            <p>Existing User? <a href='/login'>Login</a></p>
+            <p>Existing User? <span onClick={props.toggle}>Login</span></p>
           </div>
         </fieldset>
+        </div>
       </form>
     </div>
   )

@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import './loginForm.css';
+import {RegisterForm} from '../../components';
 
-const LoginForm = () => {
+const LoginForm = (props) => {
   const [email, setEmail]= useState("");
   const [password, setPassword]= useState("");
   const [message, setMessage]= useState("");
@@ -31,11 +32,16 @@ const LoginForm = () => {
       console.log(err);
     }
   };
+  const [isOpen, setIsOpen]= useState(false);
+  function togglePopUp(){
+    setIsOpen(!isOpen);
+  }
   return (
     <div className='login-form'>
       <form onSubmit={handleSubmit}>
+        <div className='login-form-background'>
         <fieldset className='login-form-fieldset'>
-          <div className='login-form-close-btn'>&times;</div>
+          <div className='login-form-close-btn' onClick={props.toggle}>&times;</div>
           <div className='login-form-legend'><b>User Login</b></div>
           <div className='login-form-label'>
             <label>Email Id</label><br></br>
@@ -47,15 +53,17 @@ const LoginForm = () => {
           </div>
           <div className='login-form-buttons'>
             <input type="reset" value="RESET"></input>
-            <input type="submit" value="LOGIN"></input>
+            <input className='login-form-buttons-login' type="submit" value="LOGIN"></input>
           </div>
           <div className='login-form-message'>
             {message ? <p>{message}</p> : null}
           </div>
           <div className='login-form-register'>
-            <p>New User? <a href='/register'>Register here</a></p>
+            <p>New User? <span onClick={togglePopUp}>Register here</span></p>
+            {isOpen? <RegisterForm toggle={togglePopUp}/>: null}
           </div>
         </fieldset>
+        </div>
       </form>
     </div>
   )

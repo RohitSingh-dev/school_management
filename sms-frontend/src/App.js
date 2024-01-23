@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { LoginForm, RegisterForm, Dashboard, Homepage, AboutUs, ContactUs, Teachers, Classes} from './components';
+import { Dashboard, Homepage, AboutUs, ContactUs, Teachers, Classes} from './components';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const App = () => {
@@ -8,8 +8,6 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/register" element={<RegisterForm />} />
-        <Route path="/login" element={<LoginForm />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/ContactUs" element={<ContactUs />} />

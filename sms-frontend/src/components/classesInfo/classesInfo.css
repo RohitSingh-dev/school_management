@@ -1,5 +1,18 @@
 .classesInfo{
     display: flex;
     flex-direction: column;
-    width: 200px;
+    width: 300px;
+    height: 370px;
+    background-color: bisque;
+}
+.classesInfo-pic img{
+    width: 300px;
+    height: 200px;
+}
+.classesInfo-heading{
+    margin-left: 10px;
+}
+.classesInfo-data{
+    margin-left: 10px;
+    margin-top: -10px;
 }
