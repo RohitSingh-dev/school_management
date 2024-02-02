@@ -30,3 +30,6 @@
     justify-content: center;
     text-align: center;
 }
+.dashboard-property{
+    display: none;
+}

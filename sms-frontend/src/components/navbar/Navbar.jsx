@@ -41,7 +41,7 @@ const Navbar = () => {
         <div className='navbar-top-right'>
           <div>
             <button className='login-button' onClick={togglePopUp}>Login</button>
-            {isOpen? document.body.style.overflow= 'hidden': document.body.style.overflow= 'unset'}
+            <div className='login-button-property'>{isOpen? document.body.style.overflow= 'hidden': document.body.style.overflow= 'unset'}</div>
             {isOpen? <LoginForm toggle={togglePopUp} />  : null}
           </div>
         </div>

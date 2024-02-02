@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import './loginForm.css';
 import {RegisterForm} from '../../components';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = (props) => {
   const [email, setEmail]= useState("");
   const [password, setPassword]= useState("");
   const [message, setMessage]= useState("");
+  const navigate = useNavigate();
   let handleSubmit = async (e)=> {
     e.preventDefault();
     try{
@@ -23,6 +25,7 @@ const LoginForm = (props) => {
         setEmail("");
         setPassword("");
         setMessage("Token Received Successfully");
+        navigate("/dashboard");
       }
       else{
         setMessage("Invalid Credentials");

@@ -35,6 +35,7 @@ const Dashboard = () => {
         </div>
       </div>
       <div className='dashboard-footer'><Footer/></div>
+      <div className='dashboard-property'>{document.body.style.overflow= 'unset'}</div>
     </div>
   )
 }

@@ -1,8 +1,13 @@
 import React from 'react';
 import './welcomeBar.css';
 import logo from '../../assets/bcet_logo.png';
+import { useNavigate } from 'react-router-dom';
 
-const welcomeBar = ({username}) => {
+const WelcomeBar = ({username}) => {
+  const navigate= useNavigate();
+  let handleClick = ()=>{
+    navigate("/");
+  };
   return (
     <div className='welcome'>
         <div className='welcome-left'>
@@ -18,11 +23,11 @@ const welcomeBar = ({username}) => {
         <div className='welcome-middle'>Welcome, {username}!!</div>
         <div className='welcome-right'>
           <div>
-          <button className='welcome-logout-button' onClick=''><a href='#logout'>Logout</a></button>
+          <button className='welcome-logout-button' onClick={handleClick}>Logout</button>
           </div>
         </div>
     </div>
   )
 }
 
-export default welcomeBar
+export default WelcomeBar
