@@ -1,0 +1,19 @@
+.submitButton{
+    display: flex;
+}
+.submitButton button{
+    height: 35px;
+    width: 100px;
+    font-weight: 800;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+.submitButton-cancel{
+    background-color: red;
+    color: #fff;
+}
+.submitButton-submit{
+    background-color: green;
+    color: #fff;
+}

@@ -16,7 +16,7 @@ const Dashboard = () => {
           </a>
         </div>
         <div className='dashboard-middle-icon-wrapper'>
-          <a href='#Profile'>
+          <a href='/Profile'>
             <div><FontAwesomeIcon className='dashboard-middle-icons' icon={faFile}></FontAwesomeIcon></div>
             <div className='dashboard-middle-text'><h3>Profile</h3></div>
           </a>

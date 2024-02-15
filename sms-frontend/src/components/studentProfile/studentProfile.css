@@ -1,0 +1,42 @@
+.studentProfile{
+    background-image: url(../../assets/compute-ea4c57a4.png);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.studentProfile-middle{
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+}
+.studentProfile-middle-left div{
+    background-color:beige;
+    color: black;
+    width: 220px;
+    height: 35px;
+    margin: 20px;
+    border: 2px yellow solid;
+    border-radius: 5px;
+}
+.studentProfile-middle-left{
+    margin: 10px 150px;
+}
+.studentProfile-middle-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.studentProfile-middle-right-top{
+    height: 300px;
+    width: 250px;
+}
+.studentProfile-middle-right-top img{
+    border: 2px white solid;
+    height: 300px;
+    width: 250px;
+    margin: 20px;
+}
+.studentProfile-middle-right-bottom{
+    margin-top: 80px;
+}

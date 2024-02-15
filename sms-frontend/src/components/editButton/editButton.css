@@ -1,0 +1,16 @@
+.editButton{
+    display: flex;
+}
+.editButton button{
+    height: 35px;
+    width: 80px;
+    background-color: yellow;
+    color: black;
+    font-weight: 800;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+.editButton button:hover{
+    background-color: #fff;
+}

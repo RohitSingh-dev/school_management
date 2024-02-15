@@ -1,0 +1,38 @@
+.teacherProfile{
+    background-image: url(../../assets/compute-ea4c57a4.png);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.teacherProfile-middle{
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+}
+.teacherProfile-middle-left div{
+    background-color:beige;
+    color: black;
+    width: 220px;
+    height: 35px;
+    margin: 20px;
+    border: 2px yellow solid;
+    border-radius: 5px;
+}
+.teacherProfile-middle-left{
+    margin: 10px 150px;
+}
+.teacherProfile-middle-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.teacherProfile-middle-right-top img{
+    border: 2px white solid;
+    height: 300px;
+    width: 250px;
+    margin: 20px;
+}
+.teacherProfile-middle-right-bottom{
+    margin-top: 80px;
+}

@@ -18,9 +18,10 @@
 }
 .dashboard-middle-icon-wrapper a:hover{
     border: 2px solid #fff;
+    border-radius: 8px;
 }
 .dashboard-middle-icons{
-    font-size: 80px;
+    font-size: 70px;
     padding: 25px;
     color: #fff;
 }

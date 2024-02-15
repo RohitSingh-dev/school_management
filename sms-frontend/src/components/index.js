@@ -12,3 +12,8 @@ export {default as Teachers} from './teachers/Teachers';
 export {default as Classes} from './classes/Classes';
 export {default as TeacherInfoClasses} from './teacherInfoClasses/TeacherInfoClasses';
 export {default as ClassesInfo} from './classesInfo/ClassesInfo';
+export {default as ProfilePage} from './profilePage/ProfilePage';
+export {default as StudentProfile} from './studentProfile/StudentProfile';
+export {default as EditButton} from './editButton/EditButton';
+export {default as SubmitButton} from './submitButton/SubmitButton';
+export {default as TeacherProfile} from './teacherProfile/TeacherProfile';
