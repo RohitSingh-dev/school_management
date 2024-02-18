@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react';
+//import React, { useEffect } from 'react';
 import './studentProfile.css';
 import {WelcomeBar, Footer, EditButton} from '../../components';
 
-const StudentProfile = (image) => {
-  let student;
-  useEffect(() => {
-      fetch("/student/11",{
-        method: "GET",
-        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MDgxMDA1NTMsImlhdCI6MTcwODAxNDE1M30.RyGFpyjjsa7ttXQuAO4a4jRHvdxDxtjAwncNiDx--_8'},
-      }).then(res => res.json()).then(json => student=(JSON.parse(json))).catch(err => console.log(err));
-  })
+const StudentProfile = () => {
+  // let student;
+  // useEffect(() => {
+  //     fetch("/student/11",{
+  //       method: "GET",
+  //       headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MDgxMDA1NTMsImlhdCI6MTcwODAxNDE1M30.RyGFpyjjsa7ttXQuAO4a4jRHvdxDxtjAwncNiDx--_8'},
+  //     }).then(res => res.json()).then(json => student=(JSON.parse(json))).catch(err => console.log(err));
+  // })
   return (
     <div className='studentProfile'>
       <div className='studentProfile-top'>
@@ -17,17 +17,40 @@ const StudentProfile = (image) => {
       </div>
       <div className='studentProfile-middle'>
         <div className='studentProfile-middle-left'>
-          <div className='studentProfile-middle-left-name'>{student?.name}</div>
-          <div className='studentProfile-middle-left-address'>{student?.address}</div>
-          <div className='studentProfile-middle-left-email'>{student?.emailId}</div>
-          <div className='studentProfile-middle-left-phone'>{student?.contact_info}</div>
-          <div className='studentProfile-middle-left-dob'>{student?.date_of_birth}</div>
-          <div className='studentProfile-middle-left-dor'>{student?.date_of_birth}</div>
-          <div className='studentProfile-middle-left-password'>{student?.date_of_birth}</div>
+          <form>
+            <div className='studentProfile-middle-left-label'>
+              <label>Name</label>
+              <input type='text' placeholder='Name' readOnly></input>
+            </div>
+            <div className='studentProfile-middle-left-label'>
+              <label>Address</label>
+              <input type='text' placeholder='Address' readOnly></input>
+            </div>
+            <div className='studentProfile-middle-left-label'>
+              <label>Email</label>
+              <input type='email' placeholder='Email' readOnly></input>
+            </div>
+            <div className='studentProfile-middle-left-label'>
+              <label>Phone</label>
+              <input type='number' placeholder='Phone' readOnly></input>
+            </div>
+            <div className='studentProfile-middle-left-label'>
+              <label>D.O.B</label>
+              <input type='date' placeholder='DD/MM/YYYY' readOnly></input>
+            </div>
+            <div className='studentProfile-middle-left-label'>
+              <label>Date of Registration</label>
+              <input type='date' placeholder='Date of Registration' readOnly></input>
+            </div>
+            <div className='studentProfile-middle-left-label'>
+              <label>Password</label>
+              <input type='password' placeholder='Password' readOnly></input>
+            </div>
+          </form>
         </div>
         <div className='studentProfile-middle-right'>
           <div className='studentProfile-middle-right-top'>
-            <img src={image} alt='Profile Pic' />
+            <img src='' alt='Profile Pic' />
           </div>
           <div className='studentProfile-middle-right-bottom'>
             <EditButton />

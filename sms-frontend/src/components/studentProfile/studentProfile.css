@@ -9,7 +9,11 @@
     display: flex;
     justify-content: space-around;
 }
-.studentProfile-middle-left div{
+.studentProfile-middle-left{
+    text-align: center;
+    margin: 10px 150px;
+}
+.studentProfile-middle-left-label input{
     background-color:beige;
     color: black;
     width: 220px;
@@ -17,9 +21,6 @@
     margin: 20px;
     border: 2px yellow solid;
     border-radius: 5px;
-}
-.studentProfile-middle-left{
-    margin: 10px 150px;
 }
 .studentProfile-middle-right{
     display: flex;

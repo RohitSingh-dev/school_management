@@ -10,7 +10,7 @@ const Dashboard = () => {
       <div className='dashboard-navbar'><WelcomeBar username='Rohit'></WelcomeBar></div>
       <div className='dashboard-middle'>
         <div className='dashboard-middle-icon-wrapper'>
-          <a href='#Home'>
+          <a href='/Dashboard'>
             <div><FontAwesomeIcon className='dashboard-middle-icons' icon={faFile}></FontAwesomeIcon></div>
             <div className='dashboard-middle-text'><h3>Home</h3></div>
           </a>
@@ -22,13 +22,13 @@ const Dashboard = () => {
           </a>
         </div>
         <div className='dashboard-middle-icon-wrapper'>
-          <a href='#Attendance'>
+          <a href='/Attendance'>
             <div><FontAwesomeIcon className='dashboard-middle-icons' icon={faFile}></FontAwesomeIcon></div>
             <div className='dashboard-middle-text'><h3>Attendance</h3></div>
           </a>
         </div>
         <div className='dashboard-middle-icon-wrapper'>
-          <a href='#Result'>
+          <a href='/Result'>
             <div><FontAwesomeIcon className='dashboard-middle-icons' icon={faFile}></FontAwesomeIcon></div>
             <div className='dashboard-middle-text'><h3>Result</h3></div>
           </a>
