@@ -1,56 +1,58 @@
-//import React, { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './studentProfile.css';
 import {WelcomeBar, Footer, EditButton} from '../../components';
+import { useState } from 'react';
 
 const StudentProfile = () => {
-  // let student;
-  // useEffect(() => {
-  //     fetch("/student/11",{
-  //       method: "GET",
-  //       headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MDgxMDA1NTMsImlhdCI6MTcwODAxNDE1M30.RyGFpyjjsa7ttXQuAO4a4jRHvdxDxtjAwncNiDx--_8'},
-  //     }).then(res => res.json()).then(json => student=(JSON.parse(json))).catch(err => console.log(err));
-  // })
+  const [student, setStudent]= useState({});
+  const [loading, setLoading]= useState(false);
+  // const pic= (data) => <img className='studentProfile-middle-right-top-pic' src={`data:image/jpg;base64,${data}`} alt='profilePic'/>
+  useEffect(() => {
+    if(!loading){
+      setLoading(true);
+      fetch("/student/11",{
+        method: "GET",
+        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MDg3ODgxMTMsImlhdCI6MTcwODcwMTcxM30.UErMqkN-Xo2k6muhWZytFvNO8ioDIN1K1dUkAlWdcYE'},
+      }).then(res => res.json()).then(json => {setStudent(json); console.log(json); console.log("Setting Image");  console.log(student.name)}).catch(err => {console.log(err); setLoading(false)});
+    }
+  })
   return (
     <div className='studentProfile'>
       <div className='studentProfile-top'>
-        <WelcomeBar />
+        <WelcomeBar username={student.name}/>
       </div>
       <div className='studentProfile-middle'>
-        <div className='studentProfile-middle-left'>
+          <div className='studentProfile-middle-left'>
           <form>
             <div className='studentProfile-middle-left-label'>
               <label>Name</label>
-              <input type='text' placeholder='Name' readOnly></input>
+              <input type='text' placeholder='Name' value={student.name} readOnly></input>
             </div>
             <div className='studentProfile-middle-left-label'>
               <label>Address</label>
-              <input type='text' placeholder='Address' readOnly></input>
+              <input type='text' placeholder='Address' value={student.address} readOnly></input>
             </div>
             <div className='studentProfile-middle-left-label'>
               <label>Email</label>
-              <input type='email' placeholder='Email' readOnly></input>
+              <input type='email' placeholder='Email' value={student.emailId} readOnly></input>
             </div>
             <div className='studentProfile-middle-left-label'>
               <label>Phone</label>
-              <input type='number' placeholder='Phone' readOnly></input>
+              <input type='number' placeholder='Phone' value={student.contact_info} readOnly></input>
             </div>
             <div className='studentProfile-middle-left-label'>
               <label>D.O.B</label>
-              <input type='date' placeholder='DD/MM/YYYY' readOnly></input>
+              <input type='date' placeholder='DD/MM/YYYY' value={student.date_of_birth} readOnly></input>
             </div>
             <div className='studentProfile-middle-left-label'>
               <label>Date of Registration</label>
-              <input type='date' placeholder='Date of Registration' readOnly></input>
-            </div>
-            <div className='studentProfile-middle-left-label'>
-              <label>Password</label>
-              <input type='password' placeholder='Password' readOnly></input>
+              <input type='date' placeholder='Date of Registration' value={student.date_of_reg} readOnly></input>
             </div>
           </form>
         </div>
         <div className='studentProfile-middle-right'>
           <div className='studentProfile-middle-right-top'>
-            <img src='' alt='Profile Pic' />
+            <img className='studentProfile-middle-right-top-pic' src={URL.createObjectURL(new Blob(atob("LzlqLzRBQVFTa1pKUmdBQkFRRUFTQUJJQUFELzJ3QkRBQVlFQlFZRkJBWUdCUVlIQndZSUNoQUtDZ2tKQ2hRT0R3d1FGeFFZR0JjVUZoWWFIU1VmR2hzakhCWVdJQ3dnSXlZbktTb3BHUjh0TUMwb01DVW9LU2ovMndCREFRY0hCd29JQ2hNS0NoTW9HaFlhS0Nnb0tDZ29LQ2dvS0Nnb0tDZ29LQ2dvS0Nnb0tDZ29LQ2dvS0Nnb0tDZ29LQ2dvS0Nnb0tDZ29LQ2dvS0Nnb0tDai93Z0FSQ0FHUEFZOERBU0lBQWhFQkF4RUIvOFFBR3dBQkFBTUJBUUVCQUFBQUFBQUFBQUFBQUFRRkJnTUNBUWYveEFBWUFRRUJBQU1BQUFBQUFBQUFBQUFBQUFBQUFRSUVCZi9hQUF3REFRQUNFQU1RQUFBQi9RQnI4OEFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBUktscVdNbWpaZExxR2NrMlhTSkxVSUFBQUFBQUFBQUFBQUFBQUFBQWNPZWVKTU1zQUFBUzRnMUhmSjZHV1dBQUFBQUFBQUFBQUFBQUFBQng3WjBpK0N3QUFBQUI3OERVOXM5b1pRQUFBQUFBQUFBQUFBQUFBSXVhczZ5d0FBQUFBQUJwc3pabDRKUUFBQUFBQUFBQUFBQUFCek16eUxBQUFBQUFBSFhrTmU1ZFpRQUFBQUFBQUFBQUFBQUVPWlhGQ0xBQUFBQUFBQU5ITXJyR1VBQUFBQUFBQUFBQUFBQlZXdFNVd3NBQUFBQUFBQXU3U3B0cFFBQUFBQUFBQUFBQUFBRlhhUURQaXdBQUFBQUFBQzd0SUUrVUFBQUFBQUFBQUFBQUFCeDdESUpVV3dBQUFBQUFBU2kvN0VvQUFBQUFBQUFBQUFBQUFFSFBhK25zcUFBQUFBQUFOREZ1QUpRQUFBQUFBQUFBQUFBQUFBSUZQcHhrR25pMlVTMzVsWXNSWExQb1ZDOWxtZnVKNVFnQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBUktscVNHbWw1WmNhVm1ocU91U0d2WmlaRjJpUzdRZ0FBQUFBQUFBQUFBQUFBQWNUdFgxa095UkhBQUFBQUJJamkvc01oTU5HNDlwUUFBQUFBQUFBQUFBQUJBcjFRZUNBQUFBQUFBQUFlNy9BRG8xNnZzRkNBQUFBQUFBQUFBQnlPR2Q5ZUxBQUFBQUFBQUFBQVB1aHp2dXRZNWRjYUFBQUFBQUFBQUF6dG5uN0FBQUFBQUFBQUFBQUFKdWl5R2dKNGxBQUFBQUFBQUVPcVNPSUFBQUFBQUFBQUFBQUFrUnhyME9Zb1FBQUFBQUFBb3IzS1djd0FBQUFBQUFBQUFBQUFBV1Y3bE5XQktBQUFBQUFCd3kraHoxZ0FBQUFBQUFBQUFBQUFBRFVaZlFFOFNnQUFmL3hBQW1FQUFDQWdJQkJBTUFBZ01BQUFBQUFBQUNBd0VFQUVBU0VSTXdVQlFqTWlFeklIQ1EvOW9BQ0FFQkFBRUZBdjhBaDJ5d3NNSzNPVFlaT2Q1bWQ1bURZWkdEYm5GdldmcVdzaGNOZVRQQ3A1cnhUSVpIcFh1aFlrVWxQaUFwR1VOaGtlamFmYkF5a3k4Z0ZJRW8rNEhvclRPWithcXpnZm9iSjhGNkZZK2F2UVhpNmxvVVM2RjZCcGNqMEZGeFp2dG5vdlNWUFZlOWJub25TcVQxUnZYcCtyU296OVc5Zi9HbFEvTzlmL09sUS9POWUvR2xRL0c5ZGo2ZEtsSDA3elI1SzBreHhYdjJBNE4wSzRjMitndEw1am9WVjhBOURhUjU2dGYwanE0bmpFbUhqV2t6eE5hQTlPYVFMQ3FCazA4K0dXZkVabnhHWjhNc2luZzFBd1VnUCtqNW1JenVobmZYbmZYbmVYa1RFK3FZOEF3N2M0VG1GL21MbURnV3l4YjFuNlZ0a1F4ampQeXJjWVlxeUplaFl3UWhyeVBSUzhneGJCT04ydzZGd1pTYzZRRklTaDBNamJzdjRaTTlaMUlucE5aL1Bhc3U3WXovQURPdEg4VFdkM0IxMkhBQ1pTWmJBRklFczRNZGF5M3VIdFZtZHN0VzJ6Z0c1VVp5RFVzSHpadUlQZ3pUdEh3VnZWVDVLMHJ4ZFQzcUpkRDBtRnlQZVhQRTlGODhWZWdSUEpXaGQvcDlCUy9wOEgvL3hBQWRFUUFEQUFJQ0F3QUFBQUFBQUFBQUFBQUFBUkV3UUZCd0VDQmcvOW9BQ0FFREFRRS9BZWlMNHUybnhid0xvNTdVSVFoQ0U0MmxLVXVuY0YrQWZJdlFXRjZDOWYvRUFCZ1JBQUlEQUFBQUFBQUFBQUFBQUFBQUFCRmdBVENBLzlvQUNBRUNBUUUvQWRsQ2dKMHFQLy9FQUNvUUFBRUNCQVVEQXdVQUFBQUFBQUFBQUFFQVFBSVJJVkFpTVRKUllSSXdjVUdCb1NCaWNKQ1IvOW9BQ0FFQkFBWS9BdjBkNXpQQ3d3aGFscUsxbGFsaWhXY2p6YWFyWWJkbmNLbG01VXllM01MbXlFbFRQZEJDbUxITDBIZmw2R3hIZGlEWWVuWmowNzJFbGpDZWJCRWVHY0o0ZnhNdy9IbG43djRXWmZ3czRuNFpsLzRaejNMK0lNd0xBUjZNUnRZYVpoak01MkxxZzcvVkg3Q3lURkNxdzl1a0ttYW16MWhDb1NGU1A0VklnczRWbkNxa0xYOEtwSlZJUitENmxhd3RTMUxXRlMxWno4TENKS3NaK3VrUldJTE9YbXl5RlNxbjI3dERUWllzSnNPSXJZTWR3cVBxYWxPSm5PRlZvWGtocVZXc3dwSFU2KzVUTGVpcnFjVEttWE13cGh2d0hkY20waG1Yc2ptR3ArSG9QOWFIbWo4Y1VaZ2JQK25kbVMvQlpSV0dFM3YveEFBckVBQUJBd0VIQkFJQkJRQUFBQUFBQUFBQkFCRWhRREZCVUZGaGNZRXdrYUd4d2RFZ2NKRGg4UEgvMmdBSUFRRUFBVDhoL1k3dEhRU1I3dE55NlBYQm9FU2ZlZ0Q1U2ljdUd3UTlrZG9WaTZTR0V1MDV1R2FlZyttUFJPcyttVTdEbThZTm5JN0Fqa285TnhMSE5YWkY0WUlOQUtDdVQxVEJzUWdnL3NjRE15TjExNTBiakFuTUxVRG1oZHEwUWVNQmJRTUJPOUM2a2N3M3dIV1l4dFE5d0dBYnNLUFZvSHI0RmFZbzVEYUhyMmhaL2VqZUlaVjd5S011TWl2OHcwZmtDdkh2dFIydld2ZUltOEQ4VWJXdEg0K0svT2tpS04xclFNQWdLVWptaGFOeVR4Z00vUWpQaE9CSGtlNDY4emVDRHFVYmFJV2d6SFRLU0FabFNUZy82TkJ2U0lMK1NDSjlpSDVTVWY1a3IvWktId3NsR2VRUUNkQ3VYYWtTSC9RK1ZBT1VYMjhxSTd2WW9YWTlpZ1Q3VklFRGhXYldTRWxnaG1aWHFCSHBFdVhML2lDUVhCSzlvaTZDZ0pHWWhXSTVsQlhZSTlmRHJJREoxZklZbXNjakFYbHdJK3dPZ0tFdXhPaVNubWZGY3lta3Jza1drYzBZYVJpRTN0am50V0FHM0lka1F4SWttK2xJSWhCRmhRaHN3ODFRR0F6ckVaZkhPZE9aZUppZ05RQzBaMUhhRWppOXFzUGVCVHhBTjBOZGF1TktkdWxOSWx4eFc3V0hGS1U5NHM0VnMyUlp5cEloYkJ6WHphMzBVYmEyQlBOZTc1SGtVV3EzcXI5Tnk2MW9YVHA3d0haTDFGQ1ZqTWpBU2dNaWVqLy8yZ0FNQXdFQUFnQURBQUFBRUFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVJUVGhTUVFRUVFRUVFRUVFRUVFRUVFRUVNudlBQTGhnUVFRUVFRUVFRUVFRUVFRUVZ2UFBQUFBQSWdRUVFRUVFRUVFRUVFRUVFkZlBQUFBQUExRUVFRUVFRUVFRUVFRUVFRWFBQUFBQUFBQQ1FRUVFRUVFRUVFRUVFRVXZQUFBQUFBQUElnUVFRUVFRUVFRUVFRUVZ2UFBQUFBQUFBDZ1FRUVFRUVFRUVFRUVFWdlBQUFBQUFBQSWdRUVFRUVFRUVFRUVFRVWRQUFBQUFBQT0lRUVFRUVFRUVFRUVFRUVFVZlBQUFBQUElRUVFRUVFRUVFRUVFRUVFRUVV1OGUrKzhBUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUlNmVFhSd1FRUVFRUVFRUVFRUVFRUVFSZGZQUFBQUFBPU1FRUVFRUVFRUVFRUVFRWHZQUFBQUFBQUExrUVFRUVFRUVFRUVFRVHZQUFBQUFBQUFBQSENRUVFRUVFRUVFRWGZQUFBQUFBQUFBQUFBMd1FRUVFRUVFRUmZQUFBQUFBQUFBQUFBQUEFRUVFRUVFRUVZmUFBQUFBQUFBQUFBQUFBDUVFRUVFRUVFkZlBQUFBQUFBQUFBQUFBQUFFRUVFmL3hBQWdFUUFDQWdJQ0FnTUFBQUFBQUFBQUFBQUJFUUF3TVVCQlVCQlJJQ0Z3LzlvQUNBRURBUUUvRVB3aEk0bXExc0JLb0gzb2wySTRxR0x6aW9Zdk9LaGpxUTVvQTUwakRSbzBhTkIxbytCdkFhWStsQTlyeVZDWFU0QzdTWFlDckM0dUI0MmhTV2dWT1dobDhmL0VBQjRSQVFBQ0FnSURBUUFBQUFBQUFBQUFBQUVBTUJGQUlGQVFJVkZ3LzlvQUNBRUNBUUUvRVB3bjNyQkErY01mWW1rVUpvbEQxSlUzbFRlVlBValF1a01HWkptWkpucjhlTVQzcGxCMEFWSmNGaVdCY09qTkJLUTBFNC8veEFBc0VBQUJBUVVJQWdNQUFnTUFBQUFBQUFBQkVRQWhNVUJCVUZGaGNZR1JvZkN4d1REUjRSRHhJSENRLzlvQUNBRUJBQUUvRVA4QWgyNEZTanlNQnFXTERpWmxhQlBMSmNZTUk1UmVXOVJHUERRQXEzcFpFWUVmTWlzWUF4TS9BcXpnUW9nVU5ZSFFteWFVNXdYNk9ocTNqSFptdmo0UWdyNGZ3WWprWU5tWWd2MUZqRUhkeE9BWWlCdit2akhVTS84QVRQVDE3ckVvUk9Bdko2ZG14cG9wZ012bHc0UU1id2MzdFdzY2NBc002b0FCZlUwK2RJZk5aTkRRMkZUY1pacTBqcEk1MEx2cThiMkRWY0FDaFg4U01Gd05CK0x0WUwxbkYzSGNKSW5vWURRcUhoYkF2S0NHYjA1U1R2b0l6SUZuMDI0aXJVZWxrMEM4VUR1VDRJbjBKaURZQ1RFUFZSb1FKL2VHZGgreVlEZjhoZnFmVjNJQ1RYM0lHZmZQWWhmVW1PQ2QySDdQb1NodXY2azArZ2pwUGhnQmZ6bUVPVWt5d2RWenI3c0JQa0YwN21BS2pTUk1lQzBlano4Q1Uzc0U2TldoSER0MGlUY05BVXNLSW1vL1ErY2dERWs5aXhLd0FVT0hNWXM4NW13T3p4cjhhRXlERGV1akV3SUNCTGh0WTRJeDhTb09yekt0aVFKOUFQTEF2QWVsL3Brc1RpRDBXQTluME1DZXI2RzdXTmd6K0dmUlhrK21PNm9KNEx5d01CV0JFQTFLbi9SN2dYZVVNT0NuSlhobzExTUdJNnpab1FQTVdkNzd3VnNsYXNLUTRNWG1ITFkrY0ZId25MUVdnMEw2bUlVaExYL0VCQUpBdEdmaDdLaGttOTRKZXg0WnlZT3VhdzVMQWlDdzFBREZYV2M2RE0xMDNhSW9qVVFhajVTTHcxRVVhQ2phWW1EZGxCRmdIYVEwQ0owNkdPYURIdU1pTmRIRU5PdVo2dWIwUjNhZW95UjV5cjZzb0hvclRJUUVuZ2hkWE1RWW9RSEVybldQOEpORTV4RktDYW5HNWl6QVVsVmI1VjVRQUZFdVlCS0tpN05GYTV3TjJiRmlnS25OZkxoS1JLZzVYTTR0WG1namhibG1DcWc0TDJNTXBlR0V5SW1RaCtiQmNhQVMyYkxpNDVmT1BwMzl6Wnd2U2htQlgrR3lsVCtyYW8rdFoxTE4zQng0bEM2TUdBVnlVTUt0WG5XZE9XZXVNUG9VMmFMeENUZk5URHU0V2ZCR25vQ2xIQ1NhdXZLUmVwOWRpNWJwckpFb0Zic1pSY1NJRndWdzBuN2lnYUs4THV3SUlSdklvS1VmQ205d2VSWUlsUlE2VXY4QXdrVWkvb0xCVXVFM2Y4UC8yUT09"), {type: "image/jpg"}))} alt='Profile Pic' />
           </div>
           <div className='studentProfile-middle-right-bottom'>
             <EditButton />
