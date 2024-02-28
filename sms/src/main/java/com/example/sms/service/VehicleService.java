@@ -9,6 +9,7 @@ import com.example.sms.entity.Vehicle;
 import com.example.sms.repository.VehicleRepository;
 
 @Service
+@SuppressWarnings("null")
 public class VehicleService {
     
     @Autowired

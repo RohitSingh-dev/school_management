@@ -7,6 +7,7 @@ import com.example.sms.entity.Marks;
 import com.example.sms.repository.MarksRepository;
 
 @Service
+@SuppressWarnings("null")
 public class MarksService {
 
     private @Autowired

@@ -8,6 +8,7 @@ import java.io.StringWriter;
 import java.nio.file.Files;
 import java.sql.Date;
 import java.util.Base64;
+// import java.util.Base64;
 import java.util.List;
 import java.util.UUID;
 
@@ -16,7 +17,7 @@ import org.apache.commons.csv.CSVPrinter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+// import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,6 +26,7 @@ import com.example.sms.entity.LoginInfo;
 import com.example.sms.entity.Parent;
 import com.example.sms.entity.SchoolClass;
 import com.example.sms.entity.Student;
+import com.example.sms.model.StudentResponse;
 import com.example.sms.model.UserType;
 import com.example.sms.repository.LoginInfoRepository;
 import com.example.sms.repository.ParentRepository;
@@ -60,34 +62,41 @@ public class StudentService {
             }
         }
         student.setPassword(passwordEncoder.encode(student.getPassword()));
+        student.getParent().setPassword(passwordEncoder.encode(student.getParent().getPassword()));
         LoginInfo loginInfo= new LoginInfo(student.getEmailId(), student.getPassword(), UserType.STUDENT);
         loginInfoRepository.save(loginInfo);
         repository.save(student);
     }
 
-    public Student getStudent(int id){
-        return repository.findById(id).get();
+    public StudentResponse getStudent(int id){
+        Student student=  repository.findById(id).get();
+        validateLoggedInUser(student);
+        StudentResponse studentResponse= new StudentResponse();
+        studentResponse.setName(student.getName());
+        studentResponse.setEmailId(student.getEmailId());
+        studentResponse.setAddress(student.getAddress());
+        studentResponse.setContact_info(student.getContact_info());
+        studentResponse.setDate_of_birth(student.getDate_of_birth());
+        studentResponse.setDate_of_reg(student.getDate_of_reg());
+        studentResponse.setPic(Base64.getEncoder().encode(student.getPic()));
+        return studentResponse;
     }
 
     public Student updateStudent(Student student){
-        UserDetails userDetails= (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Student loggedInStudent = repository.findByEmailId(userDetails.getUsername());
-        if(loggedInStudent.getId()!= student.getId()){
-            throw new RuntimeException("Invalid User");
-        }
+        validateLoggedInUser(student);
         Student existingStudent= repository.findById(student.getId()).get();
         existingStudent.setName(student.getName());
         existingStudent.setAddress(student.getAddress());
+        existingStudent.setEmailId(student.getEmailId());
         existingStudent.setContact_info(student.getContact_info());
         existingStudent.setDate_of_birth(student.getDate_of_birth());
-        existingStudent.setRoll_no(student.getRoll_no());
-        existingStudent.setDate_of_reg(student.getDate_of_reg());
-        existingStudent.setDate_of_exit(student.getDate_of_exit());
+        existingStudent.setPassword(passwordEncoder.encode(student.getPassword()));
         repository.save(existingStudent);
         return existingStudent;
     }
 
     public void deleteStudent(int id){
+        validateLoggedInUser(repository.findById(id).get());
         repository.deleteById(id);
     }
 
@@ -110,6 +119,7 @@ public class StudentService {
         return "Picture uploaded successfully";
     }
 
+    @SuppressWarnings("resource")
     public String bulkupload(MultipartFile file) throws FileNotFoundException, IOException, CsvValidationException {
         String filename= "student_"+ UUID.randomUUID().toString()+ ".csv";
         File file2 = new File(filename);
@@ -159,11 +169,25 @@ public class StudentService {
         return writer2.toString();
     }
 
-public static void main(String[] args) {
-    String password= "abc123";
-    String encodedPassword= new BCryptPasswordEncoder().encode(password);
-    System.out.println(encodedPassword);
-    String base64encoded= Base64.getEncoder().encodeToString(password.getBytes());
-    System.out.println(base64encoded);
-}
+    // public byte[] getPic(int id){
+    //     Student student= repository.findById(id).get();
+    //     byte[] base64encodedData= Base64.getEncoder().encode(student.getPic());
+    //     return base64encodedData;
+    // }
+
+    public void validateLoggedInUser(Student student){
+        UserDetails userDetails= (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Student loggedInStudent = repository.findByEmailId(userDetails.getUsername());
+        if(loggedInStudent.getId()!= student.getId()){
+            throw new RuntimeException("Invalid User");
+        }
+    }
+
+// public static void main(String[] args) {
+//     String password= "abc123";
+//     String encodedPassword= new BCryptPasswordEncoder().encode(password);
+//     System.out.println(encodedPassword);
+//     String base64encoded= Base64.getEncoder().encodeToString(password.getBytes());
+//     System.out.println(base64encoded);
+// }
 }

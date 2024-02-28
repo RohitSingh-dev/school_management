@@ -5,8 +5,9 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+// import javax.validation.constraints.Max;
+// import javax.validation.constraints.Min;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -31,16 +32,16 @@ public class Teacher {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotBlank(message = "Name cannot be Blank")
+    // @NotBlank(message = "Name cannot be Blank")
     private String name;
     private String address;
     @Email(message = "Enter a correct Email")
     @Column(name = "email_id")
     private String emailId;
-    @Min(10)
-    @Max(10)
+    // @Min(10)
+    // @Max(10)
     private int contact_info;
-    @NotNull(message = "DOB cannot be null")
+    // @NotNull(message = "DOB cannot be null")
     private Date date_of_birth;
     @NotNull(message = "Date of Joinning cannot be null")
     private Date date_of_joining;

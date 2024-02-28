@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.sms.entity.Parent;
+import com.example.sms.model.ParentResponse;
 import com.example.sms.service.ParentService;
 
 @RestController
@@ -29,9 +30,8 @@ public class ParentController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Parent> getParent(@PathVariable int id){
-        Parent parent= service.getParent(id);
-        return new ResponseEntity<Parent>(parent,HttpStatus.OK);
+    public ResponseEntity<ParentResponse> getParent(@PathVariable int id){
+        return new ResponseEntity<ParentResponse>(service.getParent(id),HttpStatus.OK);
     }
 
     @PutMapping("")

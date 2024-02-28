@@ -13,6 +13,7 @@ import com.example.sms.repository.AttendanceRepository;
 import com.example.sms.repository.SchoolClassRepository;
 
 @Service
+@SuppressWarnings("null")
 public class AttendanceService {
     
     @Autowired

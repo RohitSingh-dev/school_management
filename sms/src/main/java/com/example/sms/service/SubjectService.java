@@ -9,6 +9,7 @@ import com.example.sms.entity.Subject;
 import com.example.sms.repository.SubjectRepository;
 
 @Service
+@SuppressWarnings("null")
 public class SubjectService {
 
     @Autowired

@@ -3,8 +3,8 @@ package com.example.sms.entity;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+// import javax.validation.constraints.Max;
+// import javax.validation.constraints.Min;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -25,14 +25,14 @@ public class Parent {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotBlank(message = "Name cannot be blank")
+    // @NotBlank(message = "Name cannot be blank")
     private String name;
     private String address;
     @Email(message = "Enter correct Email")
     @Column(name = "email_id")
     private String emailId;
-    @Min(10)
-    @Max(10)
+    // @Min(10)
+    // @Max(10)
     private int contact_info;
     private String password;
 

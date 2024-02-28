@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.sms.entity.Teacher;
+import com.example.sms.model.TeacherResponse;
 import com.example.sms.service.TeacherService;
 
 @RestController
@@ -31,9 +32,8 @@ public class TeacherController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Teacher> getTeacher(@PathVariable int id){
-        Teacher teacher= service.getTeacher(id);
-        return new ResponseEntity<Teacher>(teacher, HttpStatus.OK);
+    public ResponseEntity<TeacherResponse> getTeacher(@PathVariable int id){
+        return new ResponseEntity<TeacherResponse>(service.getTeacher(id), HttpStatus.OK);
     }
 
     @PutMapping("")

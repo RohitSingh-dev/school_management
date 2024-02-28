@@ -30,16 +30,16 @@ public class Student {
     private int id;
 
 
-    @NotBlank(message = "Name cannot be null")
+    // @NotBlank(message = "Name cannot be null")
     private String name;
     private int roll_no;
     private String address;
     @Email(message = "Enter correct Email")
     private String emailId;
-    @Min(10)
-    @Max(10)
+    // @Min(10)
+    // @Max(10)
     private int contact_info;
-    @NotNull(message = "DOB cannot be null")
+    // @NotNull(message = "DOB cannot be null")
     private Date date_of_birth;
     @NotNull(message = "Date of registration cannot be null")
     private Date date_of_reg;

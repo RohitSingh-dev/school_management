@@ -20,16 +20,19 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.sms.entity.Student;
+import com.example.sms.model.StudentResponse;
 import com.example.sms.service.StudentService;
 import com.opencsv.exceptions.CsvValidationException;
 
 
 @RestController
 @RequestMapping("/student")
+@SuppressWarnings("null")
 public class StudentController {
 
     @Autowired
     private StudentService service;
+
 
     @PostMapping("")
     public ResponseEntity<String> createStudent(@RequestBody Student student) {
@@ -38,9 +41,9 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Student> getStudent(@PathVariable int id) {
-        Student student = service.getStudent(id);
-        return new ResponseEntity<Student>(student, HttpStatus.OK);
+    public ResponseEntity<StudentResponse> getStudent(@PathVariable int id) {
+        StudentResponse student = service.getStudent(id);
+        return new ResponseEntity<StudentResponse>(student, HttpStatus.OK);
     }
 
     @PutMapping("")
@@ -87,10 +90,17 @@ public class StudentController {
                 .body(service.writeStudentsToCsv());
     }
 
-    @GetMapping("/picDownload/{id}")
-    public ResponseEntity<?> getStudentPic(@PathVariable int id) throws IOException {
-        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG)
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"studentpic.jpg\"")
-                .body(service.getStudent(id).getPic());
-    }
+    // @GetMapping("/pic/{id}")
+    // public ResponseEntity<byte[]> getFile(@PathVariable int id) {
+    //     byte[] base64encodedData= service.getPic(id);
+
+    //    return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\""+ studentRepository.findById(id).get() + "\"").body(base64encodedData);
+    // }
+
+    // @GetMapping("/picDownload/{id}")
+    // public ResponseEntity<?> getStudentPic(@PathVariable int id) throws IOException {
+    //     return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG)
+    //             .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"studentpic.jpg\"")
+    //             .body(service.getStudent(id).getPic());
+    // }
 }

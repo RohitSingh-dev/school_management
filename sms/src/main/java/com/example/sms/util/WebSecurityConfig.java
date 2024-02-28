@@ -16,6 +16,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
+@Deprecated
 public class WebSecurityConfig {
 
     @Autowired
@@ -51,6 +52,5 @@ public class WebSecurityConfig {
 
         return httpSecurity.build();
     }
-
 
 }
