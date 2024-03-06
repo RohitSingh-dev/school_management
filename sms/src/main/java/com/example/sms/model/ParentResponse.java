@@ -6,6 +6,15 @@ public class ParentResponse {
     private String address;
     private String emailId;
     private int contact_info;
+    private String pic;
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
+    }
 
     public String getName() {
         return name;

@@ -78,7 +78,7 @@ public class StudentService {
         studentResponse.setContact_info(student.getContact_info());
         studentResponse.setDate_of_birth(student.getDate_of_birth());
         studentResponse.setDate_of_reg(student.getDate_of_reg());
-        studentResponse.setPic(Base64.getEncoder().encode(student.getPic()));
+        studentResponse.setPic(student.getPic());
         return studentResponse;
     }
 
@@ -114,7 +114,7 @@ public class StudentService {
 
     public String changePicture(MultipartFile image, int id) throws IOException{
         Student existingStudent= repository.findById(id).get();
-        existingStudent.setPic(image.getBytes());
+        existingStudent.setPic(new String(Base64.getEncoder().encode(image.getBytes())));
         repository.save(existingStudent);
         return "Picture uploaded successfully";
     }

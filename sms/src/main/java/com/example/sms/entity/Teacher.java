@@ -1,13 +1,12 @@
 package com.example.sms.entity;
 
-
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
 // import javax.validation.constraints.Max;
-// import javax.validation.constraints.Min;
 
+// import javax.validation.constraints.Min;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -46,12 +45,14 @@ public class Teacher {
     @NotNull(message = "Date of Joinning cannot be null")
     private Date date_of_joining;
     private Date date_of_exit;
+    @Column(length = 10000)
+    private String pic;
     private String password;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinTable(name = "teacher_subjects", joinColumns = @JoinColumn(name = "teacher_id"), inverseJoinColumns = @JoinColumn(name = "subjects_id"))
-    private List<Subject> subjects= new ArrayList<>();
+    private List<Subject> subjects = new ArrayList<>();
 
     public Teacher() {
     }
@@ -141,6 +142,14 @@ public class Teacher {
 
     public void setSubjects(List<Subject> subjects) {
         this.subjects = subjects;
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
     }
 
     @Override

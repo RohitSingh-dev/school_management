@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.sms.entity.Attendance;
+import com.example.sms.model.AttendanceResponse;
+import com.example.sms.model.TeacherAttendanceResponse;
 import com.example.sms.service.AttendanceService;
 
 @RestController
@@ -33,8 +35,8 @@ public class AttendanceController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<List<Attendance>> getAttendanceByStudent(@PathVariable int id){
-        return new ResponseEntity<List<Attendance>>(service.getAttendanceByStudent(id), HttpStatus.OK);
+    public ResponseEntity<AttendanceResponse> getAttendanceByStudent(@PathVariable int id){
+        return new ResponseEntity<AttendanceResponse>(service.getAttendanceByStudent(id), HttpStatus.OK);
     }
 
     @PutMapping("")
@@ -48,8 +50,8 @@ public class AttendanceController {
     }
 
     @GetMapping("/schoolClass/{id}")
-    public ResponseEntity<List<Attendance>> getAttendanceByClass(@PathVariable int id, @RequestHeader("User") int auth){
-        return new ResponseEntity<List<Attendance>>(service.getAttendanceByClass(id, auth), HttpStatus.OK);
+    public ResponseEntity<TeacherAttendanceResponse> getAttendanceByClass(@PathVariable int id, @RequestHeader("User") int auth){
+        return new ResponseEntity<TeacherAttendanceResponse>(service.getAttendanceByClass(id, auth), HttpStatus.OK);
     }
 
     @GetMapping("/date")

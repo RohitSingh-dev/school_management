@@ -1,0 +1,12 @@
+.result{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+.result-middle{
+    background-image: url(../../assets/compute-ea4c57a4.png);
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}

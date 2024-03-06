@@ -10,15 +10,9 @@ public class StudentResponse {
     private int contact_info;
     private Date date_of_birth;
     private Date date_of_reg;
-    private byte[] pic;
+    private String pic;
 
-    public byte[] getPic() {
-        return pic;
-    }
-
-    public void setPic(byte[] pic) {
-        this.pic = pic;
-    }
+    
 
     public String getAddress() {
         return address;
@@ -66,6 +60,14 @@ public class StudentResponse {
 
     public void setEmailId(String emailId) {
         this.emailId = emailId;
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
     }
 
 }

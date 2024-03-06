@@ -1,5 +1,7 @@
 package com.example.sms.service;
 
+import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.sms.entity.LoginInfo;
 import com.example.sms.entity.Teacher;
@@ -44,6 +47,8 @@ public class TeacherService {
         teacherResponse.setContact_info(teacher.getContact_info());
         teacherResponse.setDate_of_birth(teacher.getDate_of_birth());
         teacherResponse.setDate_of_joining(teacher.getDate_of_joining());
+        teacherResponse.setDate_of_exit(teacher.getDate_of_exit());
+        teacherResponse.setPic(teacher.getPic());
         return teacherResponse;
     }
 
@@ -63,6 +68,13 @@ public class TeacherService {
     public void deleteTeacher(int id){
         validateLoggedInUser(repository.findById(id).get());
         repository.deleteById(id);
+    }
+
+    public String changePicture(MultipartFile image, int id) throws IOException{
+        Teacher existingtTeacher= repository.findById(id).get();
+        existingtTeacher.setPic(new String(Base64.getEncoder().encode(image.getBytes())));
+        repository.save(existingtTeacher);
+        return "Picture uploaded successfully";
     }
 
     public List<Teacher> getAllTeacher() {

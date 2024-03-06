@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.sms.entity.LoginInfo;
@@ -32,6 +33,9 @@ public class RegisterService {
     @Autowired
     private ParentRepository parentRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public String registerUser(Map<String, String> params){
         LoginInfo loginInfo= loginInfoRepository.findByUsername(params.get("username"));
         if(Objects.nonNull(loginInfo)){
@@ -39,7 +43,8 @@ public class RegisterService {
         }
          ;
         if(UserType.getUserType(params.get("role")).equals(UserType.STUDENT)){
-            loginInfo= new LoginInfo(params.get("username"), params.get("password"), UserType.STUDENT);
+            String password= passwordEncoder.encode(params.get("password"));
+            loginInfo= new LoginInfo(params.get("username"), password, UserType.STUDENT);
             loginInfoRepository.save(loginInfo);
             Student student= new Student();
             student.setEmailId(loginInfo.getUsername());
@@ -47,7 +52,8 @@ public class RegisterService {
             studentRepository.save(student);
         }
         else if(UserType.getUserType(params.get("role")).equals(UserType.TEACHER)){
-            loginInfo= new LoginInfo(params.get("username"), params.get("password"), UserType.STUDENT);
+            String password= passwordEncoder.encode(params.get("password"));
+            loginInfo= new LoginInfo(params.get("username"), password, UserType.TEACHER);
             loginInfoRepository.save(loginInfo);
             Teacher teacher= new Teacher();
             teacher.setEmailId(loginInfo.getUsername());
@@ -55,7 +61,8 @@ public class RegisterService {
             teacherRepository.save(teacher);
         }
         else{
-            loginInfo= new LoginInfo(params.get("username"), params.get("password"), UserType.STUDENT);
+            String password= passwordEncoder.encode(params.get("password"));
+            loginInfo= new LoginInfo(params.get("username"), password, UserType.PARENT);
             loginInfoRepository.save(loginInfo);
             Parent parent = new Parent();
             parent.setEmailId(loginInfo.getUsername());

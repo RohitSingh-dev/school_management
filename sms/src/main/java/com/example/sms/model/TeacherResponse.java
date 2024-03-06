@@ -10,6 +10,24 @@ public class TeacherResponse {
     private int contact_info;
     private Date date_of_birth;
     private Date date_of_joining;
+    private Date date_of_exit;
+    private String pic;
+
+    public Date getDate_of_exit() {
+        return date_of_exit;
+    }
+
+    public void setDate_of_exit(Date date_of_exit) {
+        this.date_of_exit = date_of_exit;
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
+    }
 
     public String getName() {
         return name;

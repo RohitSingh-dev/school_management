@@ -16,7 +16,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -45,9 +44,8 @@ public class Student {
     private Date date_of_reg;
     private Date date_of_exit;
     private String password;
-    @Lob
     @Column(length = 10000)
-    private byte[] pic;
+    private String pic;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Parent parent;
@@ -182,13 +180,7 @@ public class Student {
         this.parent = parent;
     }
 
-    public byte[] getPic() {
-        return pic;
-    }
-
-    public void setPic(byte[] pic) {
-        this.pic = pic;
-    }
+    
 
     @Override
     public int hashCode() {
@@ -210,6 +202,14 @@ public class Student {
         if (id != other.id)
             return false;
         return true;
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
     }
 
 }

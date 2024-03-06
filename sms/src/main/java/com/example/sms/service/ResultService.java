@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.sms.entity.Marks;
 import com.example.sms.entity.Result;
+import com.example.sms.model.ResultResponse;
 import com.example.sms.repository.ResultRepository;
 
 @Service
@@ -25,8 +26,19 @@ public class ResultService {
         repository.save(result);
     }
 
-    public Result getResult(int id){
-        return repository.findById(id).get();
+    public ResultResponse getResult(int id){
+        Result result= repository.findById(id).get();
+        ResultResponse resultResponse= new ResultResponse();
+        resultResponse.setName(result.getStudent().getName());
+        resultResponse.setParent_name(result.getStudent().getParent().getName());
+        resultResponse.setAddress(result.getStudent().getAddress());
+        resultResponse.setSchoolClass(result.getStudent().getSchoolClass().getClass_name());
+        resultResponse.setRoll_no(result.getStudent().getRoll_no());
+        resultResponse.setDate_of_birth(result.getStudent().getDate_of_birth());
+        resultResponse.setMarks(result.getMarks());
+        resultResponse.setTotal_marks(result.getTotal_marks());
+        resultResponse.setPassed(result.isPassed());
+        return resultResponse;
     }
 
     public Result updateResult(Result result){

@@ -1,15 +1,14 @@
 .teacherProfile{
-    background-image: url(../../assets/compute-ea4c57a4.png);
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-.teacherProfile-middle{
     color: #fff;
     display: flex;
     justify-content: space-around;
 }
-.teacherProfile-middle-left-label input{
+.teacherProfile-left-label{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.teacherProfile-left-label input{
     background-color:beige;
     color: black;
     width: 220px;
@@ -18,22 +17,22 @@
     border: 2px yellow solid;
     border-radius: 5px;
 }
-.teacherProfile-middle-left{
+.teacherProfile-left{
     margin: 10px 150px;
     text-align: center;
 }
-.teacherProfile-middle-right{
+.teacherProfile-right{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.teacherProfile-middle-right-top img{
+.teacherProfile-right-top img{
     border: 2px white solid;
     height: 300px;
     width: 250px;
     margin: 20px;
 }
-.teacherProfile-middle-right-bottom{
+.teacherProfile-right-bottom{
     margin-top: 80px;
 }

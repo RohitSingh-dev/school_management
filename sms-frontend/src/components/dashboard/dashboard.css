@@ -1,7 +1,12 @@
 .dashboard{
-    background-image: url('../../assets/compute-ea4c57a4.png');
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .dashboard-middle{
+    background-image: url('../../assets/compute-ea4c57a4.png');
+    height: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;

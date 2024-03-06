@@ -1,19 +1,13 @@
 .studentProfile{
-    background-image: url(../../assets/compute-ea4c57a4.png);
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-.studentProfile-middle{
     color: #fff;
     display: flex;
     justify-content: space-around;
 }
-.studentProfile-middle-left{
+.studentProfile-left{
     text-align: center;
     margin: 10px 150px;
 }
-.studentProfile-middle-left-label input{
+.studentProfile-left-label input{
     background-color:beige;
     color: black;
     width: 220px;
@@ -22,22 +16,23 @@
     border: 2px yellow solid;
     border-radius: 5px;
 }
-.studentProfile-middle-right{
+.studentProfile-right{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-right: 80px;
 }
-.studentProfile-middle-right-top{
+.studentProfile-right-top{
     height: 300px;
     width: 250px;
 }
-.studentProfile-middle-right-top img{
+.studentProfile-right-top img{
     border: 2px white solid;
     height: 300px;
     width: 250px;
     margin: 20px;
 }
-.studentProfile-middle-right-bottom{
+.studentProfile-right-bottom{
     margin-top: 80px;
 }

@@ -26,16 +26,32 @@
     display: flex;
     margin-left: 30px;
 }
+.welcome-right{
+    display: flex;
+}
+.welcome-right div{
+    margin: 0px 30px;
+}
+.welcome-dashboard-button{
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: crimson;
+    color: #fff;
+    cursor: pointer;
+}
+.welcome-dashboard-button:hover{
+    background-color: red;
+}
 .welcome-logout-button{
     margin-right: 40px;
-    font-size: 20px;
+    font-size: 16px;
     padding: 10px 20px;
+    border: none;
     border-radius: 10px;
     background-color: darkorange;
-}
-.welcome-logout-button a{
-    text-decoration: none;
-    color: #fff;
+    cursor: pointer;
 }
 .welcome-logout-button:hover{
     background-color:orange;

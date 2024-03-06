@@ -1,10 +1,14 @@
 package com.example.sms.service;
 
+import java.io.IOException;
+import java.util.Base64;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.sms.entity.LoginInfo;
 import com.example.sms.entity.Parent;
@@ -40,6 +44,7 @@ public class ParentService {
         parentResponse.setAddress(parent.getAddress());
         parentResponse.setContact_info(parent.getContact_info());
         parentResponse.setEmailId(parent.getEmailId());
+        parentResponse.setPic(parent.getPic());
         return parentResponse;
     }
 
@@ -53,6 +58,13 @@ public class ParentService {
         existingParent.setPassword(passwordEncoder.encode(parent.getPassword()));
         repository.save(existingParent);
         return existingParent;
+    }
+
+    public String changePicture(MultipartFile image, int id) throws IOException{
+        Parent existingtParent= repository.findById(id).get();
+        existingtParent.setPic(new String(Base64.getEncoder().encode(image.getBytes())));
+        repository.save(existingtParent);
+        return "Picture uploaded successfully";
     }
 
     public void deleteParent(int id){

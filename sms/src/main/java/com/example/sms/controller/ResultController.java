@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.sms.entity.Result;
+import com.example.sms.model.ResultResponse;
 import com.example.sms.service.ResultService;
 
 @RestController
@@ -31,9 +32,8 @@ public class ResultController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Result> getResult(@PathVariable int id){
-        Result result= service.getResult(id);
-        return new ResponseEntity<Result>(result,HttpStatus.OK);
+    public ResponseEntity<ResultResponse> getResult(@PathVariable int id){
+        return new ResponseEntity<ResultResponse>(service.getResult(id),HttpStatus.OK);
     }
 
     @PutMapping("")

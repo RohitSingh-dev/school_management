@@ -34,6 +34,8 @@ public class Parent {
     // @Min(10)
     // @Max(10)
     private int contact_info;
+    @Column(length = 10000)
+    private String pic;
     private String password;
 
     public String getPassword() {
@@ -105,6 +107,7 @@ public class Parent {
         this.students = students;
     }
 
+    
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -125,6 +128,14 @@ public class Parent {
         if (id != other.id)
             return false;
         return true;
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
     }
     
 }

@@ -1,0 +1,75 @@
+.teacherAttendance{
+    background-color: #fff;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    margin: 50px;
+    padding: 50px;
+    border-radius: 10px;
+}
+.teacherAttendance-top{
+    display: flex;
+    flex-direction: column;
+}
+.teacherAttendance-top-top h1{
+    text-align: center;
+    border-bottom: 1px black solid;
+}
+.teacherAttendance-top-bottom{
+    display: flex;
+    flex-direction: column;
+}
+.teacherAttendance-top-bottom p{
+    margin-top: -5px;
+    margin-left: 20px;
+}
+.teacherAttendance-bottom-table{
+    display: flex;
+    flex-direction: column;
+}
+.teacherAttendance-bottom-table-head tr{
+    display: flex;
+    justify-content: space-around;
+    font-size: 18px;
+    align-items: center;
+    background-color: black;
+    color: #fff;
+    height: 40px;
+}
+.teacherAttendance-bottom-table-body tr{
+    background-color:aliceblue;
+    display: flex;
+    margin: 20px 60px;
+    padding: 8px 20px;
+}
+.teacherAttendance-bottom-table-body-studentname{
+    margin-left: 150px;
+}
+.teacherAttendance-bottom-button{
+    text-align: center;
+}
+.teacherAttendance-bottom-button button{
+    font-size: 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: green;
+    color: #fff;
+    padding: 7px 13px;
+    cursor: pointer;
+}
+.teacherAttendance-bottom-button button:hover{
+    font-weight: 600;
+}
+.teacherAttendance-bottom-table-body-button button{
+    width: 160px;
+    padding: 8px 18px;
+    background-color: blue;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    margin-left: 415px;
+}

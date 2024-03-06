@@ -1,0 +1,38 @@
+.parentProfile{
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+}
+.parentProfile-left-label{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.parentProfile-left-label input{
+    background-color:beige;
+    color: black;
+    width: 220px;
+    height: 35px;
+    margin: 20px;
+    border: 2px yellow solid;
+    border-radius: 5px;
+}
+.parentProfile-left{
+    margin: 10px 150px;
+    text-align: center;
+}
+.parentProfile-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.parentProfile-right-top img{
+    border: 2px white solid;
+    height: 300px;
+    width: 250px;
+    margin: 20px;
+}
+.parentProfile-right-bottom{
+    margin-top: 80px;
+}

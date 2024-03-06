@@ -22,9 +22,8 @@ const WelcomeBar = ({username}) => {
         </div>
         <div className='welcome-middle'>Welcome, {username}!!</div>
         <div className='welcome-right'>
-          <div>
-          <button className='welcome-logout-button' onClick={handleClick}>Logout</button>
-          </div>
+          <div><a href='/dashboard'><button className='welcome-dashboard-button'>Dashboard</button></a></div>
+          <div><button className='welcome-logout-button' onClick={handleClick}>Logout</button></div>
         </div>
     </div>
   )

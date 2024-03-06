@@ -1,5 +1,7 @@
 package com.example.sms.controller;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.sms.entity.Parent;
 import com.example.sms.model.ParentResponse;
@@ -32,6 +36,11 @@ public class ParentController {
     @GetMapping("/{id}")
     public ResponseEntity<ParentResponse> getParent(@PathVariable int id){
         return new ResponseEntity<ParentResponse>(service.getParent(id),HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}/upload")
+    public String uploadPicture(@PathVariable int id, @RequestParam("file") MultipartFile img) throws IOException {
+        return service.changePicture(img, id);
     }
 
     @PutMapping("")
