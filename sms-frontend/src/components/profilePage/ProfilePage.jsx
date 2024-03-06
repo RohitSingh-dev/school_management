@@ -7,7 +7,7 @@ const ProfilePage = () => {
   return (
     <div className='profilePage'>
       <div className='profilePage-top'><WelcomeBar /></div>
-      <div className='profilePage-middle'><ParentProfile /></div>
+      <div className='profilePage-middle'><TeacherProfile /></div>
       <div className='profilePage-bottom'><DashboardFooter /></div>
         
     </div>

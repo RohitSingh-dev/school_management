@@ -3,7 +3,7 @@ import './teacherAttendance.css';
 import StudentAttendance from '../studentAttendance/StudentAttendance';
 
 const TeacherAttendance = () => {
-    const [attendance, setAttendance]= useState({});
+    const [attendances, setAttendances]= useState([]);
     const [loading, setLoading]= useState(false);
     useEffect(() => {
       if(!loading){
@@ -12,7 +12,7 @@ const TeacherAttendance = () => {
           method: "GET",
           headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzA5NzM3OTYzLCJpYXQiOjE3MDk2NTE1NjN9.CNjz-OpeypQJYAvxw70-QjgYc_UWRQXbn7HV5errI0c',
         User: 4},
-        }).then(res => res.json()).then(json => setAttendance(json)).catch(err => {console.log(err); setLoading(false)});
+        }).then(res => res.json()).then(json => setAttendances(json)).catch(err => {console.log(err); setLoading(false)});
       }
     }, [])
     const [isOpen, setIsOpen]= useState(false);
@@ -26,7 +26,7 @@ const TeacherAttendance = () => {
                 <h1>Attendance Record</h1>
             </div >
             <div className='teacherAttendance-top-bottom'>
-                <p><b>Class : {attendance.schoolClass}</b>{}</p>
+                <p><b>Class : {attendances.slice(0,1).map((attendance) => attendance.student.schoolClass.class_name)}</b>{}</p>
                 <p><b>Students : </b></p>
             </div>
         </div>
@@ -40,9 +40,9 @@ const TeacherAttendance = () => {
                 </thead>
                 <tbody className='teacherAttendance-bottom-table-body'>
                     {
-                        attendance.attendanceResponses?.map((row,index) => {
+                        attendances.map((attendance,index) => {
                             return <tr key={index}>
-                                <td className='teacherAttendance-bottom-table-body-studentname'>{row.attendanceResponses.attendance.student.name}</td>
+                                <td className='teacherAttendance-bottom-table-body-studentname'>{attendance.student.name}</td>
                                 <td className='teacherAttendance-bottom-table-body-button'><button onClick={togglePopUp}>View Attendance</button></td>
                                 {isOpen? <StudentAttendance toggle={togglePopUp} />  : null}
                             </tr>

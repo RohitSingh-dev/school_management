@@ -1,11 +1,11 @@
 package com.example.sms.model;
 
-import java.util.List;
+import java.util.HashSet;
 
 public class TeacherAttendanceResponse {
 
     private String schoolClass;
-    private List<AttendanceResponse> attendanceResponses;
+    private HashSet<AttendanceResponse> attendanceResponses;
 
     public String getSchoolClass() {
         return schoolClass;
@@ -15,12 +15,14 @@ public class TeacherAttendanceResponse {
         this.schoolClass = schoolClass;
     }
 
-    public List<AttendanceResponse> getAttendanceResponses() {
+    public HashSet<AttendanceResponse> getAttendanceResponses() {
         return attendanceResponses;
     }
 
-    public void setAttendanceResponses(List<AttendanceResponse> attendanceResponses) {
+    public void setAttendanceResponses(HashSet<AttendanceResponse> attendanceResponses) {
         this.attendanceResponses = attendanceResponses;
     }
+
+    
 
 }

@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.sms.entity.Attendance;
 import com.example.sms.model.AttendanceResponse;
-import com.example.sms.model.TeacherAttendanceResponse;
 import com.example.sms.service.AttendanceService;
 
 @RestController
@@ -50,8 +49,8 @@ public class AttendanceController {
     }
 
     @GetMapping("/schoolClass/{id}")
-    public ResponseEntity<TeacherAttendanceResponse> getAttendanceByClass(@PathVariable int id, @RequestHeader("User") int auth){
-        return new ResponseEntity<TeacherAttendanceResponse>(service.getAttendanceByClass(id, auth), HttpStatus.OK);
+    public ResponseEntity<List<Attendance>> getAttendanceByClass(@PathVariable int id, @RequestHeader("User") int auth){
+        return new ResponseEntity<List<Attendance>>(service.getAttendanceByClass(id, auth), HttpStatus.OK);
     }
 
     @GetMapping("/date")

@@ -11,7 +11,6 @@ import com.example.sms.entity.Attendance;
 import com.example.sms.entity.SchoolClass;
 import com.example.sms.model.AttendanceResponse;
 import com.example.sms.model.AttendanceStatusResponse;
-import com.example.sms.model.TeacherAttendanceResponse;
 import com.example.sms.repository.AttendanceRepository;
 import com.example.sms.repository.SchoolClassRepository;
 
@@ -53,7 +52,7 @@ public class AttendanceService {
         return "Attendance deleted successfully";
     }
 
-    public TeacherAttendanceResponse getAttendanceByClass(int id, int auth){
+    public List<Attendance> getAttendanceByClass(int id, int auth){
         //String str= new String(Base64.decode(auth.substring(6).getBytes()));
         //String username= str.substring(0,str.indexOf(":"));
         //Teacher teacher= teacherRepository.findByEmailId(username);
@@ -61,11 +60,7 @@ public class AttendanceService {
         if(auth!=schoolClass.getTeacher().getId()){
             throw new RuntimeException("Only Class Teacher can fetch the attendane of this class");
         }
-        TeacherAttendanceResponse teacherAttendanceResponse = new TeacherAttendanceResponse();
-        teacherAttendanceResponse.setSchoolClass(schoolClass.getClass_name());
-        List<AttendanceResponse> attendanceResponses= new ArrayList<>();
-
-        return teacherAttendanceResponse;
+        return repository.findByStudent_SchoolClass_Id(id);
     }
 
     public List<Attendance> getAttendanceByDate(Date date){
