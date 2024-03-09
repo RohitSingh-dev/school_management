@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './studentResult.css';
+import WelcomeBar from '../welcomeBar/WelcomeBar';
+import DashboardFooter from '../dashboardFooter/DashboardFooter';
 
 const StudentResult = (props) => {
     const [result, setResult]= useState({});
@@ -10,13 +12,15 @@ const StudentResult = (props) => {
         setLoading(true);
         fetch("/result/1",{
           method: "GET",
-          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MDk3Mzc3MjgsImlhdCI6MTcwOTY1MTMyOH0.jh0mYn4TnxpmCv5eHBaC2i-xVV-0FZwAeJMTAjKiwP8'},
+          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MDk5OTk1MjEsImlhdCI6MTcwOTkxMzEyMX0.polE1olU6xtaBnu3Po__-qC2JnZ_zH20s8tqwTl6rws'},
         }).then(res => res.json()).then(json => {setResult(json); setMarks(json.marks)}).catch(err => {console.log(err); setLoading(false)});
       }
     }, [])
   return (
-    <div className='studentResult'>
-        <div className='studentResult-close' onClick={props.toggle}>&times;</div>
+    <div className='studentResultPage'>
+        <div className='studentResultPage-welcomeBar'><WelcomeBar /></div>
+        <div className='studentResultPage-middle'>
+        <div className='studentResult'>
         <div className='studentResult-top'>
             <h1>Record of Academic Permformance</h1>
         </div>
@@ -58,6 +62,9 @@ const StudentResult = (props) => {
                 <h3>Status : {result.passed===true? "Pass" : "Fail"}</h3>
             </div>
         </div>
+    </div>
+        </div>
+        <div className='studentResultPage-dashboardFooter'><DashboardFooter /></div>
     </div>
   )
 }

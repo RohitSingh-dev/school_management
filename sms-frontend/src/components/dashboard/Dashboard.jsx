@@ -16,13 +16,13 @@ const Dashboard = () => {
           </a>
         </div>
         <div className='dashboard-middle-icon-wrapper'>
-          <a href='/Attendance'>
+          <a href='/TeacherAttendance'>
             <div><FontAwesomeIcon className='dashboard-middle-icons' icon={faTablet}></FontAwesomeIcon></div>
             <div className='dashboard-middle-text'><h3>Attendance</h3></div>
           </a>
         </div>
         <div className='dashboard-middle-icon-wrapper'>
-          <a href='/Result'>
+          <a href='/TeacherResult'>
             <div><FontAwesomeIcon className='dashboard-middle-icons' icon={faPencil}></FontAwesomeIcon></div>
             <div className='dashboard-middle-text'><h3>Result</h3></div>
           </a>

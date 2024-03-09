@@ -1,3 +1,16 @@
+.studentResultPage{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+.studentResultPage-middle{
+    background-image: url(../../assets/compute-ea4c57a4.png);
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    padding: 50px 0px;
+}
 .studentResult{
     background-color: #fff;
     display: flex;
@@ -6,14 +19,6 @@
     margin: 50px;
     padding: 50px;
     border-radius: 10px;
-}
-.studentResult-close{
-    display: flex;
-    justify-content: flex-end;
-    margin-top: -20px;
-    font-size: 20px;
-    color: red;
-    cursor: pointer;
 }
 .studentResult-top h1{
     text-align: center;

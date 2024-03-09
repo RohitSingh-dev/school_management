@@ -1,5 +1,6 @@
 package com.example.sms.controller;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.util.List;
 
@@ -16,10 +17,13 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.sms.entity.Attendance;
 import com.example.sms.model.AttendanceResponse;
+import com.example.sms.model.TeacherAttendanceResponse;
 import com.example.sms.service.AttendanceService;
+import com.opencsv.exceptions.CsvValidationException;
 
 @RestController
 @RequestMapping("/attendance")
@@ -49,8 +53,13 @@ public class AttendanceController {
     }
 
     @GetMapping("/schoolClass/{id}")
-    public ResponseEntity<List<Attendance>> getAttendanceByClass(@PathVariable int id, @RequestHeader("User") int auth){
-        return new ResponseEntity<List<Attendance>>(service.getAttendanceByClass(id, auth), HttpStatus.OK);
+    public ResponseEntity<TeacherAttendanceResponse> getAttendanceByClass(@PathVariable int id, @RequestHeader("User") int auth){
+        return new ResponseEntity<TeacherAttendanceResponse>(service.getAttendanceByClass(id, auth), HttpStatus.OK);
+    }
+
+    @PutMapping("/bulkupload")
+    public String bulkupload(@RequestParam("file") MultipartFile file) throws IOException, CsvValidationException {
+        return service.bulkupload(file);
     }
 
     @GetMapping("/date")

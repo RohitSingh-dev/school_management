@@ -10,7 +10,7 @@ const ParentProfile = () => {
       setLoading(true);
       fetch("/parent/9",{
         method: "GET",
-        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXJlbnQxMjNAZ21haWwuY29tIiwiZXhwIjoxNzA5NzQwMDk3LCJpYXQiOjE3MDk2NTM2OTd9.LkJcN3dfNf0fCCeZLyKQrAtZeSTlVcsEJbx2GrH59D0'},
+        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXJlbnQxMjNAZ21haWwuY29tIiwiZXhwIjoxNzA5OTkxOTA3LCJpYXQiOjE3MDk5MDU1MDd9.5I-XqY4qTIMH-F_v-f7s6-36yrko6AY_9AyFGcyiZac'},
       }).then(res => res.json()).then(json => setParent(json)).catch(err => {console.log(err); setLoading(false)});
     }
   }, [])

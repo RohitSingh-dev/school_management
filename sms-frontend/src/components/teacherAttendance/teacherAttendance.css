@@ -1,3 +1,17 @@
+.teacherAttendancePage{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+.teacherAttendancePage-middle{
+    background-image: url(../../assets/compute-ea4c57a4.png);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 0px;
+}
 .teacherAttendance{
     background-color: #fff;
     color: black;

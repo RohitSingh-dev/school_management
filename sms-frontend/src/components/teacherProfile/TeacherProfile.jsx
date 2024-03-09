@@ -10,7 +10,7 @@ const TeacherProfile = () => {
       setLoading(true);
       fetch("/teacher/4",{
         method: "GET",
-        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzA5NzM3OTYzLCJpYXQiOjE3MDk2NTE1NjN9.CNjz-OpeypQJYAvxw70-QjgYc_UWRQXbn7HV5errI0c'},
+        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzA5OTk5NDQxLCJpYXQiOjE3MDk5MTMwNDF9.DLM5O52OLt6LU6U0bqRu0thTyKZetq4yZWfz_v18N6E'},
       }).then(res => res.json()).then(json => setTeacher(json)).catch(err => {console.log(err); setLoading(false)});
     }
   },[])

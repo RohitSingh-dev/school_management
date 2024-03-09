@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './teacherResult.css';
-import StudentResult from '../studentResult/StudentResult';
+import { Link } from 'react-router-dom';
+import {WelcomeBar, DashboardFooter} from '../../components';
 
 const TeacherResult = () => {
     const [results, setResults]= useState([]);
@@ -10,16 +11,15 @@ const TeacherResult = () => {
         setLoading(true);
         fetch("/result/schoolClass/1",{
           method: "GET",
-          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzA5NzM3OTYzLCJpYXQiOjE3MDk2NTE1NjN9.CNjz-OpeypQJYAvxw70-QjgYc_UWRQXbn7HV5errI0c'},
+          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzA5OTk5NDQxLCJpYXQiOjE3MDk5MTMwNDF9.DLM5O52OLt6LU6U0bqRu0thTyKZetq4yZWfz_v18N6E'},
         }).then(res => res.json()).then(json => setResults(json)).catch(err => {console.log(err); setLoading(false)});
       }
     }, [])
-    const [isOpen, setIsOpen]= useState(false);
-    function togglePopUp(){
-      setIsOpen(!isOpen);
-    }
   return (
-    <div className='teacherResult'>
+    <div className='teacherResultPage'>
+        <div className='teacherResultPage-welcomeBar'><WelcomeBar /></div>
+        <div className='teacherResultPage-middle'>
+        <div className='teacherResult'>
         <div className='teacherResult-top'>
             <div className='teacherResult-top-left'>
                 <h1>Academic Result</h1>
@@ -44,8 +44,7 @@ const TeacherResult = () => {
                             return <tr key={index}>
                                 <td>{result.student.name}</td>
                                 <td className='teacherResult-bottom-table-body-status'>{result.passed===true? <span className='teacherResult-bottom-table-body-status-pass'>Pass</span> : <span className='teacherResult-bottom-table-body-status-fail'>Fail</span>}</td>
-                                <td><button onClick={togglePopUp}>View Result</button></td>
-                                {isOpen? <StudentResult toggle={togglePopUp} />  : null}
+                                <td><Link to={"/Result/${result.student.id}"}><button>View Result</button></Link></td>
                             </tr>
                         })
                     }
@@ -55,6 +54,9 @@ const TeacherResult = () => {
                 <button>Upload Result</button>
             </div>
         </div>
+    </div>
+        </div>
+        <div className='teacherResultPage-dashboardFooter'><DashboardFooter /></div>
     </div>
   )
 }

@@ -23,7 +23,7 @@ public class Attendance {
     private Date date;
     private boolean present;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(name = "student_id")
     private Student student;
@@ -31,9 +31,10 @@ public class Attendance {
     public Attendance() {
     }
 
-    public Attendance(Date date, boolean present) {
+    public Attendance(Date date, boolean present, Student student) {
         this.date = date;
         this.present = present;
+        this.student = student;
     }
 
     public int getId() {
@@ -90,6 +91,4 @@ public class Attendance {
         return true;
     }
 
-    
-    
 }

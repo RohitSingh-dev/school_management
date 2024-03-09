@@ -17,8 +17,6 @@ export {default as StudentProfile} from './studentProfile/StudentProfile';
 export {default as EditButton} from './editButton/EditButton';
 export {default as SubmitButton} from './submitButton/SubmitButton';
 export {default as TeacherProfile} from './teacherProfile/TeacherProfile';
-export {default as Attendance} from './attendance/Attendance';
-export {default as Result} from './result/Result';
 export {default as StudentResult} from './studentResult/StudentResult';
 export {default as TeacherResult} from './teacherResult/TeacherResult';
 export {default as DashboardFooter} from './dashboardFooter/DashboardFooter';

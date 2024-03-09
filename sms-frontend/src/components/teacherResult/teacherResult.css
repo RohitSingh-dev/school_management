@@ -1,3 +1,16 @@
+.teacherResultPage{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+.teacherResultPage-middle{
+    background-image: url(../../assets/compute-ea4c57a4.png);
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    padding: 50px 0px;
+}
 .teacherResult{
     background-color: #fff;
     display: flex;

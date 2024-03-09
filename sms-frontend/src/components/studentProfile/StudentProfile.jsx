@@ -11,7 +11,7 @@ const StudentProfile = () => {
       setLoading(true);
       fetch("/student/11",{
         method: "GET",
-        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MDk3Mzc3MjgsImlhdCI6MTcwOTY1MTMyOH0.jh0mYn4TnxpmCv5eHBaC2i-xVV-0FZwAeJMTAjKiwP8'},
+        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MDk5OTk1MjEsImlhdCI6MTcwOTkxMzEyMX0.polE1olU6xtaBnu3Po__-qC2JnZ_zH20s8tqwTl6rws'},
       }).then(res => res.json()).then(json => setStudent(json)).catch(err => {console.log(err); setLoading(false)});
     }
   }, [])
