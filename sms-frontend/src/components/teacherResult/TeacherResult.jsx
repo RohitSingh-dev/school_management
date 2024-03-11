@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom';
 import {WelcomeBar, DashboardFooter} from '../../components';
 
 const TeacherResult = () => {
-    const [results, setResults]= useState([]);
+    const [result, setResult]= useState({});
     const [loading, setLoading]= useState(false);
     useEffect(() => {
       if(!loading){
         setLoading(true);
         fetch("/result/schoolClass/1",{
           method: "GET",
-          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzA5OTk5NDQxLCJpYXQiOjE3MDk5MTMwNDF9.DLM5O52OLt6LU6U0bqRu0thTyKZetq4yZWfz_v18N6E'},
-        }).then(res => res.json()).then(json => setResults(json)).catch(err => {console.log(err); setLoading(false)});
+          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEwMjUxOTUwLCJpYXQiOjE3MTAxNjU1NTB9.aI3qlMmmmdyN9mOEAkZvGQUVF5qwjXl7u3atKjdl8aw'},
+        }).then(res => res.json()).then(json => setResult(json)).catch(err => {console.log(err); setLoading(false)});
       }
     }, [])
   return (
@@ -25,8 +25,8 @@ const TeacherResult = () => {
                 <h1>Academic Result</h1>
             </div >
             <div className='teacherResult-top-right'>
-                <p>Class : {results.slice(0,1).map((result) => result.student.schoolClass.class_name)}</p>
-                <p>Students : {results.length}</p>
+                <p>Class : {result.schoolClass}</p>
+                <p>Students : {result.resultResponses?.length}</p>
             </div>
         </div>
         <div className='teacherResult-bottom'>
@@ -40,10 +40,10 @@ const TeacherResult = () => {
                 </thead>
                 <tbody className='teacherResult-bottom-table-body'>
                     {
-                        results.map((result,index) => {
+                        result.resultResponses?.map((res,index) => {
                             return <tr key={index}>
-                                <td>{result.student.name}</td>
-                                <td className='teacherResult-bottom-table-body-status'>{result.passed===true? <span className='teacherResult-bottom-table-body-status-pass'>Pass</span> : <span className='teacherResult-bottom-table-body-status-fail'>Fail</span>}</td>
+                                <td>{res.name}</td>
+                                <td className='teacherResult-bottom-table-body-status'>{res.passed===true? <span className='teacherResult-bottom-table-body-status-pass'>Pass</span> : <span className='teacherResult-bottom-table-body-status-fail'>Fail</span>}</td>
                                 <td><Link to={"/Result/${result.student.id}"}><button>View Result</button></Link></td>
                             </tr>
                         })
@@ -51,6 +51,7 @@ const TeacherResult = () => {
                 </tbody>
             </table>
             <div className='teacherResult-bottom-button'>
+                <input type='file' name='file' onChange=''></input>
                 <button>Upload Result</button>
             </div>
         </div>

@@ -6,27 +6,27 @@ import {WelcomeBar, DashboardFooter} from '../../components';
 const TeacherAttendance = () => {
     const [attendance, setAttendance]= useState({});
     const [loading, setLoading]= useState(false);
+    const [file, setFile]= useState(null);
     useEffect(() => {
       if(!loading){
         setLoading(true);
         fetch("/attendance/schoolClass/1",{
           method: "GET",
-          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzA5OTk5NDQxLCJpYXQiOjE3MDk5MTMwNDF9.DLM5O52OLt6LU6U0bqRu0thTyKZetq4yZWfz_v18N6E',
+          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEwMjUxOTUwLCJpYXQiOjE3MTAxNjU1NTB9.aI3qlMmmmdyN9mOEAkZvGQUVF5qwjXl7u3atKjdl8aw',
         User: 4},
         }).then(res => res.json()).then(json => setAttendance(json)).catch(err => {console.log(err); setLoading(false)});
       }
     }, [])
-    const [file, setFile]= useState();
-    function onFileChange(e){
+    let onFileChange=(e)=> {
         setFile(e.target.files[0]);
     }
-    function onFileUpload(e){
+    let onFileUpload= (e)=> {
         e.preventDefault();
         const formData= new FormData();
-        formData.append("file", file);
+        formData.append('file', file);
         fetch("/attendance/bulkupload",{
             method: "PUT",
-            headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzA5OTk5NDQxLCJpYXQiOjE3MDk5MTMwNDF9.DLM5O52OLt6LU6U0bqRu0thTyKZetq4yZWfz_v18N6E',
+            headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEwMjUxOTUwLCJpYXQiOjE3MTAxNjU1NTB9.aI3qlMmmmdyN9mOEAkZvGQUVF5qwjXl7u3atKjdl8aw',
         'Content-Type': 'multipart/form-data'},
         body: formData,
         }).then(response=> {
@@ -74,7 +74,7 @@ const TeacherAttendance = () => {
             </table>
             </div>
             <div className='teacherAttendance-bottom-button'>
-                <input type='file' onChange={onFileChange}></input>
+                <input type='file' onChange={onFileChange} webkitdirectory></input>
                 <button onClick={onFileUpload}>Upload Attendance</button>
             </div>
         </div>

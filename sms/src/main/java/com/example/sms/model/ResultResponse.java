@@ -17,6 +17,16 @@ public class ResultResponse {
     private int total_marks;
     private boolean passed;
 
+    
+
+    public ResultResponse(String name, boolean passed) {
+        this.name = name;
+        this.passed = passed;
+    }
+
+    public ResultResponse() {
+    }
+
     public String getName() {
         return name;
     }

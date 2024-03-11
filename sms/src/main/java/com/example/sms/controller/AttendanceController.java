@@ -58,8 +58,8 @@ public class AttendanceController {
     }
 
     @PutMapping("/bulkupload")
-    public String bulkupload(@RequestParam("file") MultipartFile file) throws IOException, CsvValidationException {
-        return service.bulkupload(file);
+    public ResponseEntity<String> bulkupload(@RequestParam("file") MultipartFile file) throws IOException, CsvValidationException {
+        return ResponseEntity.ok().body(service.bulkupload(file));
     }
 
     @GetMapping("/date")

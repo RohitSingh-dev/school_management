@@ -89,6 +89,7 @@
     display: flex;
     justify-content: center;
     margin-top: 25px;
+    align-items: center;
 }
 .teacherResult-bottom-button button{
     background-color: blueviolet;
@@ -98,6 +99,7 @@
     font-size: 20px;
     padding: 5px 14px;
     cursor: pointer;
+    margin-left: -50px;
 }
 .teacherResult-bottom-button button:hover{
     font-weight: 600;

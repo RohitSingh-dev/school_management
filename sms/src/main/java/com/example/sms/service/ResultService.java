@@ -1,15 +1,28 @@
 package com.example.sms.service;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.example.sms.entity.Attendance;
 import com.example.sms.entity.Marks;
 import com.example.sms.entity.Result;
+import com.example.sms.entity.Student;
 import com.example.sms.model.ResultResponse;
+import com.example.sms.model.TeacherResultResponse;
 import com.example.sms.repository.ResultRepository;
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
 
 @Service
 public class ResultService {
@@ -56,15 +69,49 @@ public class ResultService {
         return (List<Result>) repository.findAll();
     }
 
-    public List<Result> getResultsByClass(int class_id){
-        List<Result> results= (List<Result>) repository.findAll();
-        List<Result> resultsByClass = new ArrayList<>();
+    public TeacherResultResponse getResultsByClass(int class_id){
+        List<Result> results= repository.findByStudent_SchoolClass_Id(class_id);
+        TeacherResultResponse teacherResultResponse = new TeacherResultResponse();
+        teacherResultResponse.setSchoolClass(results.get(0).getStudent().getSchoolClass().getClass_name());
+        List<ResultResponse> resultResponses= new ArrayList<>();
         for(Result result : results){
-            if(result.getStudent().getSchoolClass().getId() == class_id){
-                resultsByClass.add(result);
-            }
+            ResultResponse resultResponse= new ResultResponse(result.getStudent().getName(), result.isPassed());
+            resultResponses.add(resultResponse);
         }
-        return resultsByClass;
+        teacherResultResponse.setResultResponses(resultResponses);
+        return teacherResultResponse;
+    }
+
+
+    @SuppressWarnings("resource")
+    public String bulkupload(MultipartFile file) throws FileNotFoundException, IOException, CsvValidationException {
+        String filename= "result_"+ UUID.randomUUID().toString()+ ".csv";
+        File file2 = new File(filename);
+        Files.write(file2.toPath(), file.getBytes());
+        CSVReader csvReader= new CSVReader(new FileReader(filename));
+        String[] row;
+        String name;
+        String parent_name;
+        String address;
+        String schoolClass;
+        int roll_no;
+        Date date_of_birth;
+        boolean present;
+        int student_id;
+        try{
+            while ((row=csvReader.readNext())!= null) {
+                name= String.valueOf(row[0]);
+                parent_name= String.valueOf(row[1]);
+                address= String.valueOf(row[2]);
+                schoolClass= String.valueOf(row[3]);
+                date_of_birth= Date.valueOf(row[4]);
+                
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            throw e;
+        }
+        return "Result Uploaded Successfully";
     }
 
     public List<Result> getResultsOfPassedStudents(){
