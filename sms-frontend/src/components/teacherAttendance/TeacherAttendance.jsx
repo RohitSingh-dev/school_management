@@ -12,7 +12,7 @@ const TeacherAttendance = () => {
         setLoading(true);
         fetch("/attendance/schoolClass/1",{
           method: "GET",
-          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEwMjUxOTUwLCJpYXQiOjE3MTAxNjU1NTB9.aI3qlMmmmdyN9mOEAkZvGQUVF5qwjXl7u3atKjdl8aw',
+          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzExMTIxMzM1LCJpYXQiOjE3MTEwMzQ5MzV9.4hPFLJdbD80Pr_PmyheQWYCCFG0pcfTmeuJD-8gaXJk',
         User: 4},
         }).then(res => res.json()).then(json => setAttendance(json)).catch(err => {console.log(err); setLoading(false)});
       }
@@ -22,13 +22,12 @@ const TeacherAttendance = () => {
     }
     let onFileUpload= (e)=> {
         e.preventDefault();
-        const formData= new FormData();
-        formData.append('file', file);
         fetch("/attendance/bulkupload",{
-            method: "PUT",
-            headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEwMjUxOTUwLCJpYXQiOjE3MTAxNjU1NTB9.aI3qlMmmmdyN9mOEAkZvGQUVF5qwjXl7u3atKjdl8aw',
-        'Content-Type': 'multipart/form-data'},
-        body: formData,
+            method: "POST",
+            headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzExMTIxMzM1LCJpYXQiOjE3MTEwMzQ5MzV9.4hPFLJdbD80Pr_PmyheQWYCCFG0pcfTmeuJD-8gaXJk',
+        'Content-Type': 'multipart/form-data',
+    'Content-Length': '${file.size}'},
+        body: file,
         }).then(response=> {
             if(response.ok){
                 alert("File Uploaded Successfully");
@@ -74,7 +73,7 @@ const TeacherAttendance = () => {
             </table>
             </div>
             <div className='teacherAttendance-bottom-button'>
-                <input type='file' onChange={onFileChange} webkitdirectory></input>
+                <input type='file' onChange={onFileChange}></input>
                 <button onClick={onFileUpload}>Upload Attendance</button>
             </div>
         </div>

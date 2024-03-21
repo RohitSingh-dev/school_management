@@ -191,3 +191,21 @@ public class StudentService {
 //     System.out.println(base64encoded);
 // }
 }
+
+
+
+// {
+//     "name": "Rishav",
+//     
+//     "address": "Patna",
+//     "emailId": "rishav@gmail.com",
+//     "contact_info": 9876543210,
+//     "date_of_birth": "2002-05-15",
+//     "date_of_reg": "2007-04-01",
+//     
+//     
+//     "parent": {
+//        "emailId": "parent@gmail.com",
+//        
+//    }
+// }

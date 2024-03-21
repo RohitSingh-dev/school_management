@@ -54,13 +54,12 @@ public class TeacherService {
 
     public Teacher updateTeacher(Teacher teacher){
         validateLoggedInUser(teacher);
-        Teacher existingTeacher= repository.findById(teacher.getId()).get();
+        Teacher existingTeacher= repository.findByEmailId(teacher.getEmailId());
         existingTeacher.setName(teacher.getName());
         existingTeacher.setEmailId(teacher.getEmailId());
         existingTeacher.setAddress(teacher.getAddress());
         existingTeacher.setContact_info(teacher.getContact_info());
         existingTeacher.setDate_of_birth(teacher.getDate_of_birth());
-        existingTeacher.setPassword(passwordEncoder.encode(teacher.getPassword()));
         repository.save(existingTeacher);
         return existingTeacher;
     }
@@ -84,7 +83,7 @@ public class TeacherService {
     public void validateLoggedInUser(Teacher teacher){
         UserDetails userDetails= (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Teacher loggedInTeacher = repository.findByEmailId(userDetails.getUsername());
-        if(loggedInTeacher.getId()!= teacher.getId()){
+        if(!loggedInTeacher.getEmailId().equals(teacher.getEmailId())){
             throw new RuntimeException("Invalid User");
         }
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 import './profilePage.css';
-import { DashboardFooter, ParentProfile, StudentProfile, TeacherProfile, WelcomeBar } from '..';
+import { DashboardFooter, ParentProfile, StudentProfile, TeacherProfile, TeacherProfileEdit, WelcomeBar } from '..';
 
 const ProfilePage = () => {
   

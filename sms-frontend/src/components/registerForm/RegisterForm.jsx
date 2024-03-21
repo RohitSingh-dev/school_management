@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import './registerForm.css';
 
-const RegisterForm = (props) => {
+const RegisterForm = () => {
   const [email, setEmail]= useState("");
   const [password, setPassword]= useState("");
   const [confirmpassword, setConfirmpassword]= useState("");
   const [role, setRole]= useState("STUDENT");
   const [message, setMessage]= useState("");
-  let handleSubmit = async(e)=> {
-    console.log("inside handleSubmit");
+  let handleRegister = async (e)=> {
+    console.log("inside handleRegister");
     e.preventDefault();
     if(password===confirmpassword){
       console.log("password matched");
@@ -46,10 +46,8 @@ const RegisterForm = (props) => {
   };
   return (
     <div className='registerForm'>
-      <form onSubmit={handleSubmit}>
-        <div className='registerForm-background'>
+      <form onSubmit={handleRegister}>
         <fieldset className='registerForm-fieldset'>
-          <div className='registerForm-close-btn' onClick={props.toggle}>&times;</div>
           <div className='registerForm-legend'><b>Register Here</b></div>
           <div className='registerForm-label'>
             <label for="email">Email Id</label><br></br>
@@ -79,10 +77,9 @@ const RegisterForm = (props) => {
             {message ? <p id='message'>{message}</p> : null}
           </div>
           <div className='registerForm-login'>
-            <p>Existing User? <span onClick={props.toggle}>Login</span></p>
+            <p>Existing User? <a href='/'>Login</a></p>
           </div>
         </fieldset>
-        </div>
       </form>
     </div>
   )

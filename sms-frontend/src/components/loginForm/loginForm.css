@@ -41,10 +41,13 @@
     margin-top: 25px;
     font-size: 30px;
 }
-.login-form-register span{
+.login-form-register a{
     color: red;
     font-weight: 600;
-    cursor: pointer;
+    text-decoration: none;
+}
+.login-form-register a:hover{
+    font-weight: 700;
 }
 .login-form-message{
     color: red;

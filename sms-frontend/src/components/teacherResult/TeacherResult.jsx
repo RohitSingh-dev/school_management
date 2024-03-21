@@ -11,7 +11,7 @@ const TeacherResult = () => {
         setLoading(true);
         fetch("/result/schoolClass/1",{
           method: "GET",
-          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEwMjUxOTUwLCJpYXQiOjE3MTAxNjU1NTB9.aI3qlMmmmdyN9mOEAkZvGQUVF5qwjXl7u3atKjdl8aw'},
+          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzExMTIxMzM1LCJpYXQiOjE3MTEwMzQ5MzV9.4hPFLJdbD80Pr_PmyheQWYCCFG0pcfTmeuJD-8gaXJk'},
         }).then(res => res.json()).then(json => setResult(json)).catch(err => {console.log(err); setLoading(false)});
       }
     }, [])

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import './loginForm.css';
-import {RegisterForm} from '../../components';
 import { useNavigate } from 'react-router-dom';
 
 const LoginForm = (props) => {
@@ -35,10 +34,6 @@ const LoginForm = (props) => {
       console.log(err);
     }
   };
-  const [isOpen, setIsOpen]= useState(false);
-  function togglePopUp(){
-    setIsOpen(!isOpen);
-  }
   return (
     <div className='login-form'>
       <form onSubmit={handleSubmit}>
@@ -62,8 +57,7 @@ const LoginForm = (props) => {
             {message ? <p>{message}</p> : null}
           </div>
           <div className='login-form-register'>
-            <p>New User? <span onClick={togglePopUp}>Register here</span></p>
-            {isOpen? <RegisterForm toggle={togglePopUp}/>: null}
+            <p>New User? <a href='/register'>Register here</a></p>
           </div>
         </fieldset>
         </div>

@@ -12,7 +12,7 @@ const StudentResult = (props) => {
         setLoading(true);
         fetch("/result/1",{
           method: "GET",
-          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MTAyNTIwNTYsImlhdCI6MTcxMDE2NTY1Nn0.TxkWxzzN3Dmf9hxPMnkofWzyx6e9f6Lnw-4t6W5XcZI'},
+          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MTExMjEyNjEsImlhdCI6MTcxMTAzNDg2MX0.x33tBytcehed769CIAYS-7EFaNUoIL8F2i-SfkgcFHs'},
         }).then(res => res.json()).then(json => {setResult(json); setMarks(json.marks)}).catch(err => {console.log(err); setLoading(false)});
       }
     }, [])

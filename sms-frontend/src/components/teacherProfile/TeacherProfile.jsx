@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './teacherProfile.css';
-import {EditButton} from '../../components';
 
 const TeacherProfile = () => {
   const [teacher, setTeacher]= useState({});
@@ -10,7 +9,7 @@ const TeacherProfile = () => {
       setLoading(true);
       fetch("/teacher/4",{
         method: "GET",
-        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEwMjUxOTUwLCJpYXQiOjE3MTAxNjU1NTB9.aI3qlMmmmdyN9mOEAkZvGQUVF5qwjXl7u3atKjdl8aw'},
+        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzExMTIxMzM1LCJpYXQiOjE3MTEwMzQ5MzV9.4hPFLJdbD80Pr_PmyheQWYCCFG0pcfTmeuJD-8gaXJk'},
       }).then(res => res.json()).then(json => setTeacher(json)).catch(err => {console.log(err); setLoading(false)});
     }
   },[])
@@ -53,7 +52,7 @@ const TeacherProfile = () => {
           <img src={`data:image/jpg;base64,${teacher.pic}`} alt='Profile Pic' />
         </div>
         <div className='teacherProfile-right-bottom'>
-          <EditButton />
+          <a href='/TeacherProfile/edit'><button onClick=''>Edit /</button></a>
         </div>
       </div>
     </div>

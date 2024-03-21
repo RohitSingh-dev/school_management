@@ -23,3 +23,4 @@ export {default as DashboardFooter} from './dashboardFooter/DashboardFooter';
 export {default as StudentAttendance} from './studentAttendance/StudentAttendance';
 export {default as TeacherAttendance} from './teacherAttendance/TeacherAttendance';
 export {default as ParentProfile} from './parentProfile/ParentProfile';
+export {default as TeacherProfileEdit} from './teacherProfileEdit/TeacherProfileEdit';
