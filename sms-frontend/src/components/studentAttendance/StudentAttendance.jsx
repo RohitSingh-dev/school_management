@@ -11,7 +11,7 @@ const StudentAttendance = () => {
         setLoading(true);
         fetch("/attendance/1",{
           method: "GET",
-          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MTExMjEyNjEsImlhdCI6MTcxMTAzNDg2MX0.x33tBytcehed769CIAYS-7EFaNUoIL8F2i-SfkgcFHs'},
+          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MTEzODM1NjgsImlhdCI6MTcxMTI5NzE2OH0.4ZeKFPKac-BsvU5_Tq6RgX2kySfY9P5Y6Ix-a6poRmM'},
         }).then(res => res.json()).then(json => setAttendance(json)).catch(err => {console.log(err); setLoading(false)});
       }
     }, [])

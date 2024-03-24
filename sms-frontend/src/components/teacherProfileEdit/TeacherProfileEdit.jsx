@@ -11,7 +11,7 @@ const [teacher, setTeacher]= useState({});
       setLoading(true);
       fetch("/teacher/4",{
         method: "GET",
-        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzExMTIxMzM1LCJpYXQiOjE3MTEwMzQ5MzV9.4hPFLJdbD80Pr_PmyheQWYCCFG0pcfTmeuJD-8gaXJk'},
+        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzExMzgzNjgwLCJpYXQiOjE3MTEyOTcyODB9.ZI72o4DCzmVAqWU2I_s8GfWo5KCLOj_sVw7voy3Hayo'},
       }).then(res => res.json()).then(json => setTeacher(json)).catch(err => {console.log(err); setLoading(false)});
     }
   },[]);
@@ -28,7 +28,7 @@ const [teacher, setTeacher]= useState({});
             date_of_birth: teacher.date_of_birth
         }),
         headers: {'Content-Type': 'application/json',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzExMTIxMzM1LCJpYXQiOjE3MTEwMzQ5MzV9.4hPFLJdbD80Pr_PmyheQWYCCFG0pcfTmeuJD-8gaXJk'},
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzExMzgzNjgwLCJpYXQiOjE3MTEyOTcyODB9.ZI72o4DCzmVAqWU2I_s8GfWo5KCLOj_sVw7voy3Hayo'},
       });
       let resJSON = await res.text();
       if(res.status===200){
@@ -83,7 +83,7 @@ const [teacher, setTeacher]= useState({});
           <img src={`data:image/jpg;base64,${teacher?.pic}`} alt='Profile Pic' />
         </div>
         <div className='teacherProfileEdit-right-bottom'>
-          <a href='/TeacherProfile/edit'><button onClick={handleSubmit}>Submit</button></a>
+          <button onClick={handleSubmit}>Submit</button>
         </div>
       </div>
     </div>

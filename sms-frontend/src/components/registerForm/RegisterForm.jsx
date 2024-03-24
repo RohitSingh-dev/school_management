@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import './registerForm.css';
+import logo from '../../assets/bcet_logo.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
 
 const RegisterForm = () => {
   const [email, setEmail]= useState("");
@@ -46,6 +49,22 @@ const RegisterForm = () => {
   };
   return (
     <div className='registerForm'>
+      <div className='registerForm-top'>
+        <div className='registerForm-top-left'>
+          <div className='registerForm-top-logo'>
+            <div>
+              <img src={logo} alt="bcet_logo"></img>
+            </div>
+          </div>
+          <div className='registerForm-top-name'>
+            <h3>School Management<br></br>System</h3>
+          </div>
+        </div>
+        <div className='registerForm-top-right'>
+          <div><a href='/'><FontAwesomeIcon icon={faHome}></FontAwesomeIcon></a></div>
+        </div>
+      </div>
+      <div className='registerForm-bottom'>
       <form onSubmit={handleRegister}>
         <fieldset className='registerForm-fieldset'>
           <div className='registerForm-legend'><b>Register Here</b></div>
@@ -81,6 +100,7 @@ const RegisterForm = () => {
           </div>
         </fieldset>
       </form>
+      </div>
     </div>
   )
 }

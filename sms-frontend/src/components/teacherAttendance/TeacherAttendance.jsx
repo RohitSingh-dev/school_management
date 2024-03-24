@@ -12,7 +12,7 @@ const TeacherAttendance = () => {
         setLoading(true);
         fetch("/attendance/schoolClass/1",{
           method: "GET",
-          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzExMTIxMzM1LCJpYXQiOjE3MTEwMzQ5MzV9.4hPFLJdbD80Pr_PmyheQWYCCFG0pcfTmeuJD-8gaXJk',
+          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzExMzgzNjgwLCJpYXQiOjE3MTEyOTcyODB9.ZI72o4DCzmVAqWU2I_s8GfWo5KCLOj_sVw7voy3Hayo',
         User: 4},
         }).then(res => res.json()).then(json => setAttendance(json)).catch(err => {console.log(err); setLoading(false)});
       }
@@ -24,7 +24,7 @@ const TeacherAttendance = () => {
         e.preventDefault();
         fetch("/attendance/bulkupload",{
             method: "POST",
-            headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzExMTIxMzM1LCJpYXQiOjE3MTEwMzQ5MzV9.4hPFLJdbD80Pr_PmyheQWYCCFG0pcfTmeuJD-8gaXJk',
+            headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzExMzgzNjgwLCJpYXQiOjE3MTEyOTcyODB9.ZI72o4DCzmVAqWU2I_s8GfWo5KCLOj_sVw7voy3Hayo',
         'Content-Type': 'multipart/form-data',
     'Content-Length': '${file.size}'},
         body: file,

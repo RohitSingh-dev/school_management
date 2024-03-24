@@ -50,12 +50,11 @@ public class ParentService {
 
     public Parent updateParent(Parent parent){
         validateLoggedInUser(parent);
-        Parent existingParent= repository.findById(parent.getId()).get();
+        Parent existingParent= repository.findByEmailId(parent.getEmailId());
         existingParent.setName(parent.getName());
         existingParent.setAddress(parent.getAddress());
         existingParent.setEmailId(parent.getEmailId());
         existingParent.setContact_info(parent.getContact_info());
-        existingParent.setPassword(passwordEncoder.encode(parent.getPassword()));
         repository.save(existingParent);
         return existingParent;
     }
@@ -75,7 +74,7 @@ public class ParentService {
     public void validateLoggedInUser(Parent parent){
         UserDetails userDetails= (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Parent loggedInParent = repository.findByEmailId(userDetails.getUsername());
-        if(loggedInParent.getId()!= parent.getId()){
+        if(!loggedInParent.getEmailId().equals(parent.getEmailId())){
             throw new RuntimeException("Invalid User");
         }
     }

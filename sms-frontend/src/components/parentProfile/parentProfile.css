@@ -36,3 +36,16 @@
 .parentProfile-right-bottom{
     margin-top: 80px;
 }
+.parentProfile-right-bottom button{
+    height: 35px;
+    width: 80px;
+    background-color: yellow;
+    color: black;
+    font-weight: 800;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+.parentProfile-right-bottom button:hover{
+    background-color: #fff;
+}

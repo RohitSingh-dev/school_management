@@ -1,13 +1,13 @@
-.studentProfile{
+.studentProfileEdit{
     color: #fff;
     display: flex;
     justify-content: space-around;
 }
-.studentProfile-left{
+.studentProfileEdit-left{
     text-align: center;
     margin: 10px 150px;
 }
-.studentProfile-left-label input{
+.studentProfileEdit-left-label input{
     background-color:beige;
     color: black;
     width: 220px;
@@ -16,36 +16,36 @@
     border: 2px yellow solid;
     border-radius: 5px;
 }
-.studentProfile-right{
+.studentProfileEdit-right{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-right: 80px;
 }
-.studentProfile-right-top{
+.studentProfileEdit-right-top{
     height: 300px;
     width: 250px;
 }
-.studentProfile-right-top img{
+.studentProfileEdit-right-top img{
     border: 2px white solid;
     height: 300px;
     width: 250px;
     margin: 20px;
 }
-.studentProfile-right-bottom{
+.studentProfileEdit-right-bottom{
     margin-top: 80px;
 }
-.studentProfile-right-bottom button{
+.studentProfileEdit-right-bottom button{
     height: 35px;
-    width: 80px;
-    background-color: yellow;
-    color: black;
+    width: 100px;
+    background-color: green;
+    color: #fff;
     font-weight: 800;
     border: none;
     border-radius: 7px;
     cursor: pointer;
 }
-.studentProfile-right-bottom button:hover{
-    background-color: #fff;
+.studentProfileEdit-right-bottom button:hover{
+    background-color:seagreen;
 }

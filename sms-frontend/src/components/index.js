@@ -24,3 +24,6 @@ export {default as StudentAttendance} from './studentAttendance/StudentAttendanc
 export {default as TeacherAttendance} from './teacherAttendance/TeacherAttendance';
 export {default as ParentProfile} from './parentProfile/ParentProfile';
 export {default as TeacherProfileEdit} from './teacherProfileEdit/TeacherProfileEdit';
+export {default as ProfilePageEdit} from './profilePageEdit/ProfilePageEdit';
+export {default as ParentProfileEdit} from './parentProfileEdit/ParentProfileEdit';
+export {default as StudentProfileEdit} from './studentProfileEdit/StudentProfileEdit';

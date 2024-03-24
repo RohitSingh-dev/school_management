@@ -78,19 +78,19 @@ public class StudentService {
         studentResponse.setContact_info(student.getContact_info());
         studentResponse.setDate_of_birth(student.getDate_of_birth());
         studentResponse.setDate_of_reg(student.getDate_of_reg());
+        studentResponse.setParent_emailId(student.getParent().getEmailId());
         studentResponse.setPic(student.getPic());
         return studentResponse;
     }
 
     public Student updateStudent(Student student){
         validateLoggedInUser(student);
-        Student existingStudent= repository.findById(student.getId()).get();
+        Student existingStudent= repository.findByEmailId(student.getEmailId());
         existingStudent.setName(student.getName());
         existingStudent.setAddress(student.getAddress());
         existingStudent.setEmailId(student.getEmailId());
         existingStudent.setContact_info(student.getContact_info());
         existingStudent.setDate_of_birth(student.getDate_of_birth());
-        existingStudent.setPassword(passwordEncoder.encode(student.getPassword()));
         repository.save(existingStudent);
         return existingStudent;
     }
@@ -178,7 +178,7 @@ public class StudentService {
     public void validateLoggedInUser(Student student){
         UserDetails userDetails= (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Student loggedInStudent = repository.findByEmailId(userDetails.getUsername());
-        if(loggedInStudent.getId()!= student.getId()){
+        if(!loggedInStudent.getEmailId().equals(student.getEmailId())){
             throw new RuntimeException("Invalid User");
         }
     }

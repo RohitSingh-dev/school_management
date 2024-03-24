@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './studentProfile.css';
-import {EditButton} from '../../components';
-import { useState } from 'react';
 
 const StudentProfile = () => {
   const [student, setStudent]= useState({});
@@ -11,7 +9,7 @@ const StudentProfile = () => {
       setLoading(true);
       fetch("/student/11",{
         method: "GET",
-        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MTExMjEyNjEsImlhdCI6MTcxMTAzNDg2MX0.x33tBytcehed769CIAYS-7EFaNUoIL8F2i-SfkgcFHs'},
+        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MTEzODM1NjgsImlhdCI6MTcxMTI5NzE2OH0.4ZeKFPKac-BsvU5_Tq6RgX2kySfY9P5Y6Ix-a6poRmM'},
       }).then(res => res.json()).then(json => setStudent(json)).catch(err => {console.log(err); setLoading(false)});
     }
   }, [])
@@ -43,6 +41,10 @@ const StudentProfile = () => {
             <label>D.O.Reg</label>
             <input type='date' placeholder='Date of Registration' value={student.date_of_reg} readOnly></input>
           </div>
+          <div className='studentProfile-left-label'>
+            <label>Parent Email:</label>
+            <input type='email' placeholder='Parent Email' value={student.parent_emailId} readOnly></input>
+          </div>
         </form>
       </div>
       <div className='studentProfile-right'>
@@ -50,7 +52,7 @@ const StudentProfile = () => {
           <img className='studentProfile-right-top-pic' src={`data:image/jpg;base64,${student.pic}`} alt='profilePic'/>
         </div>
         <div className='studentProfile-right-bottom'>
-          <EditButton />
+          <a href='/Profile/edit'><button>Edit /</button></a>
         </div>
       </div>
     </div>

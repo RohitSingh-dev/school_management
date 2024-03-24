@@ -38,8 +38,8 @@
 }
 .teacherProfileEdit-right-bottom button{
     height: 35px;
-    width: 80px;
-    background-color: red;
+    width: 100px;
+    background-color: green;
     color: #fff;
     font-weight: 800;
     border: none;
@@ -47,5 +47,5 @@
     cursor: pointer;
 }
 .teacherProfileEdit-right-bottom button:hover{
-    background-color:crimson;
+    background-color:seagreen;
 }

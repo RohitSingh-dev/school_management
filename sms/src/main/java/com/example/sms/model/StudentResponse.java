@@ -10,6 +10,7 @@ public class StudentResponse {
     private int contact_info;
     private Date date_of_birth;
     private Date date_of_reg;
+    private String parent_emailId;
     private String pic;
 
     
@@ -68,6 +69,14 @@ public class StudentResponse {
 
     public void setPic(String pic) {
         this.pic = pic;
+    }
+
+    public String getParent_emailId() {
+        return parent_emailId;
+    }
+
+    public void setParent_emailId(String parent_emailId) {
+        this.parent_emailId = parent_emailId;
     }
 
 }

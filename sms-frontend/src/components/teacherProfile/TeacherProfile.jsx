@@ -9,7 +9,7 @@ const TeacherProfile = () => {
       setLoading(true);
       fetch("/teacher/4",{
         method: "GET",
-        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzExMTIxMzM1LCJpYXQiOjE3MTEwMzQ5MzV9.4hPFLJdbD80Pr_PmyheQWYCCFG0pcfTmeuJD-8gaXJk'},
+        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzExMzgzNjgwLCJpYXQiOjE3MTEyOTcyODB9.ZI72o4DCzmVAqWU2I_s8GfWo5KCLOj_sVw7voy3Hayo'},
       }).then(res => res.json()).then(json => setTeacher(json)).catch(err => {console.log(err); setLoading(false)});
     }
   },[])
@@ -52,7 +52,7 @@ const TeacherProfile = () => {
           <img src={`data:image/jpg;base64,${teacher.pic}`} alt='Profile Pic' />
         </div>
         <div className='teacherProfile-right-bottom'>
-          <a href='/TeacherProfile/edit'><button onClick=''>Edit /</button></a>
+          <a href='/Profile/edit'><button>Edit /</button></a>
         </div>
       </div>
     </div>

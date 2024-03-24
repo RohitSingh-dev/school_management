@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './parentProfile.css';
-import {EditButton} from '../../components';
 
 const ParentProfile = () => {
     const [parent, setParent]= useState({});
@@ -10,7 +9,7 @@ const ParentProfile = () => {
       setLoading(true);
       fetch("/parent/9",{
         method: "GET",
-        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXJlbnQxMjNAZ21haWwuY29tIiwiZXhwIjoxNzA5OTkxOTA3LCJpYXQiOjE3MDk5MDU1MDd9.5I-XqY4qTIMH-F_v-f7s6-36yrko6AY_9AyFGcyiZac'},
+        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXJlbnQxMjNAZ21haWwuY29tIiwiZXhwIjoxNzExMzgzNzgyLCJpYXQiOjE3MTEyOTczODJ9.1P5EiHvFc6skMx6ZHtB4_1Lwmgjc8uD4eks5dmbpkJE'},
       }).then(res => res.json()).then(json => setParent(json)).catch(err => {console.log(err); setLoading(false)});
     }
   }, [])
@@ -41,7 +40,7 @@ const ParentProfile = () => {
           <img className='parentProfile-right-top-pic' src={`data:image/jpg;base64,${parent.pic}`} alt='profilePic'/>
         </div>
         <div className='parentProfile-right-bottom'>
-          <EditButton />
+          <a href='/Profile/edit'><button>Edit /</button></a>
         </div>
       </div>
     </div>

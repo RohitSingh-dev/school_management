@@ -1,14 +1,45 @@
 .registerForm{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-image: url(../../assets/compute-ea4c57a4.png);
+    background-position: center;
+}
+.registerForm-top{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 40px;
+    align-items: center;
+    background-color: #fff;
+}
+.registerForm-top-left{
+    display: flex;
+    font-size: 25px;
+}
+.registerForm-top-logo{
+    display: flex;
+    align-items: center;
+}
+.registerForm-top-logo img{
+    width: 100px;
+    height: 100px;
+}
+.registerForm-top-name{
+    display: flex;
+    margin-left: 30px;
+}
+.registerForm-top-right a{
+    text-decoration: none;
+    font-size: 30px;
+    color: #5cb85c;
+}
+.registerForm-bottom{
     color: #fff;
     text-align: center;
-    background-image: url(../../assets/register_bg.avif);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    margin-top: 140px;
 }
 .registerForm-buttons input{
     margin: 20px;
@@ -43,7 +74,7 @@
     height: 470px;
     border: none;
     border-radius: 10px;
-    box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.20);
+    box-shadow: 3px 3px 1px 1px #ffffff42;
 }
 .registerForm-legend{
     margin-top: 15px;

@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Dashboard, Homepage, AboutUs, ContactUs, Teachers, Classes, ProfilePage, StudentAttendance, StudentResult, TeacherAttendance, TeacherResult, RegisterForm, TeacherProfileEdit} from './components';
+import { Dashboard, Homepage, AboutUs, ContactUs, Teachers, Classes, ProfilePage, StudentAttendance, StudentResult, TeacherAttendance, TeacherResult, RegisterForm, ProfilePageEdit} from './components';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const App = () => {
@@ -19,7 +19,7 @@ const App = () => {
         <Route path='/TeacherResult' element={<TeacherResult />} />
         <Route path='/Result/:id' element={<StudentResult />} />
         <Route path='/register' element={<RegisterForm />} />
-        <Route path='/TeacherProfile/edit' element={<TeacherProfileEdit />} />
+        <Route path='/Profile/edit' element={<ProfilePageEdit />} />
       </Routes>
     </BrowserRouter>
 

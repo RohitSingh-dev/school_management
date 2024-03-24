@@ -1,13 +1,14 @@
-.studentProfile{
+.parentProfileEdit{
     color: #fff;
     display: flex;
     justify-content: space-around;
 }
-.studentProfile-left{
-    text-align: center;
-    margin: 10px 150px;
+.parentProfileEdit-left-label{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.studentProfile-left-label input{
+.parentProfileEdit-left-label input{
     background-color:beige;
     color: black;
     width: 220px;
@@ -16,36 +17,35 @@
     border: 2px yellow solid;
     border-radius: 5px;
 }
-.studentProfile-right{
+.parentProfileEdit-left{
+    margin: 10px 150px;
+    text-align: center;
+}
+.parentProfileEdit-right{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-right: 80px;
 }
-.studentProfile-right-top{
-    height: 300px;
-    width: 250px;
-}
-.studentProfile-right-top img{
+.parentProfileEdit-right-top img{
     border: 2px white solid;
     height: 300px;
     width: 250px;
     margin: 20px;
 }
-.studentProfile-right-bottom{
+.parentProfileEdit-right-bottom{
     margin-top: 80px;
 }
-.studentProfile-right-bottom button{
+.parentProfileEdit-right-bottom button{
     height: 35px;
-    width: 80px;
-    background-color: yellow;
-    color: black;
+    width: 100px;
+    background-color: green;
+    color: #fff;
     font-weight: 800;
     border: none;
     border-radius: 7px;
     cursor: pointer;
 }
-.studentProfile-right-bottom button:hover{
-    background-color: #fff;
+.parentProfileEdit-right-bottom button:hover{
+    background-color:seagreen;
 }
