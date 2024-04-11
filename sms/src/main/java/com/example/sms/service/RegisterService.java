@@ -48,6 +48,7 @@ public class RegisterService {
             loginInfoRepository.save(loginInfo);
             Student student= new Student();
             student.setEmailId(loginInfo.getUsername());
+            student.setPassword(password);
             student.setDate_of_reg(new Date(System.currentTimeMillis()));
             studentRepository.save(student);
         }
@@ -57,6 +58,7 @@ public class RegisterService {
             loginInfoRepository.save(loginInfo);
             Teacher teacher= new Teacher();
             teacher.setEmailId(loginInfo.getUsername());
+            teacher.setPassword(password);
             teacher.setDate_of_joining(new Date(System.currentTimeMillis()));
             teacherRepository.save(teacher);
         }
@@ -66,6 +68,7 @@ public class RegisterService {
             loginInfoRepository.save(loginInfo);
             Parent parent = new Parent();
             parent.setEmailId(loginInfo.getUsername());
+            parent.setPassword(password);
             parentRepository.save(parent);
         }
 

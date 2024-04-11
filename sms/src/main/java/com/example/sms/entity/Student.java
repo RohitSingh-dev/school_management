@@ -44,7 +44,7 @@ public class Student {
     private Date date_of_reg;
     private Date date_of_exit;
     private String password;
-    @Column(length = 10000)
+    @Column(length = 100000)
     private String pic;
 
     @ManyToOne(cascade = CascadeType.PERSIST)

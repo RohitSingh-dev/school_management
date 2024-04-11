@@ -34,7 +34,7 @@ public class Parent {
     // @Min(10)
     // @Max(10)
     private int contact_info;
-    @Column(length = 10000)
+    @Column(length = 100000)
     private String pic;
     private String password;
 

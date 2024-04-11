@@ -86,11 +86,13 @@ public class StudentService {
     public Student updateStudent(Student student){
         validateLoggedInUser(student);
         Student existingStudent= repository.findByEmailId(student.getEmailId());
+        Parent existingParent= parent_Repository.findByEmailId(student.getParent().getEmailId());
         existingStudent.setName(student.getName());
         existingStudent.setAddress(student.getAddress());
         existingStudent.setEmailId(student.getEmailId());
         existingStudent.setContact_info(student.getContact_info());
         existingStudent.setDate_of_birth(student.getDate_of_birth());
+        existingStudent.setParent(existingParent);
         repository.save(existingStudent);
         return existingStudent;
     }

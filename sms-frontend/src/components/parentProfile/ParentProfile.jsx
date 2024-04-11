@@ -9,7 +9,7 @@ const ParentProfile = () => {
       setLoading(true);
       fetch("/parent/9",{
         method: "GET",
-        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXJlbnQxMjNAZ21haWwuY29tIiwiZXhwIjoxNzExMzgzNzgyLCJpYXQiOjE3MTEyOTczODJ9.1P5EiHvFc6skMx6ZHtB4_1Lwmgjc8uD4eks5dmbpkJE'},
+        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXJlbnQxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEyNzYyNTM4LCJpYXQiOjE3MTI2NzYxMzh9.-VBePuj29h9I5sr04jOkbB6bpV_PfHz7tYwsgIX0Umw'},
       }).then(res => res.json()).then(json => setParent(json)).catch(err => {console.log(err); setLoading(false)});
     }
   }, [])

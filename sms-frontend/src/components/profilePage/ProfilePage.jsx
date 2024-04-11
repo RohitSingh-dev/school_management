@@ -1,15 +1,14 @@
 import React from 'react';
 import './profilePage.css';
-import { DashboardFooter, ParentProfile, StudentProfile, TeacherProfile, TeacherProfileEdit, WelcomeBar } from '..';
+import { DashboardFooter, ParentProfile, StudentProfile, TeacherProfile, WelcomeBar } from '..';
 
 const ProfilePage = () => {
   
   return (
     <div className='profilePage'>
       <div className='profilePage-top'><WelcomeBar /></div>
-      <div className='profilePage-middle'><StudentProfile /></div>
+      <div className='profilePage-middle'><TeacherProfile /></div>
       <div className='profilePage-bottom'><DashboardFooter /></div>
-        
     </div>
   )
 }

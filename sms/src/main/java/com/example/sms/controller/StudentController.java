@@ -74,8 +74,8 @@ public class StudentController {
     }
 
     @PutMapping("/{id}/upload")
-    public String uploadPicture(@PathVariable int id, @RequestParam("file") MultipartFile img) throws IOException {
-        return service.changePicture(img, id);
+    public ResponseEntity<String> uploadPicture(@PathVariable int id, @RequestParam("file") MultipartFile img) throws IOException {
+        return ResponseEntity.ok().body(service.changePicture(img, id));
     }
 
     @PutMapping("/bulkupload")

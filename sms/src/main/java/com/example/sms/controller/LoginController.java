@@ -12,12 +12,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.sms.model.AuthenticationModel;
 import com.example.sms.service.JwtService;
+import com.example.sms.service.LoginService;
 
 @RestController
 public class LoginController {
 
     @Autowired
     private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private LoginService loginService;
 
     @Autowired
     private JwtService jwtService;
@@ -30,6 +34,6 @@ public class LoginController {
             return new ResponseEntity<String>( "Invalid Credentials",HttpStatus.UNAUTHORIZED);
         }
         String token= jwtService.generateToken(authenticationModel.getUsername());
-        return ResponseEntity.ok().body(token);
+        return ResponseEntity.ok().body(loginService.login(authenticationModel.getUsername(), token));
     }
 }

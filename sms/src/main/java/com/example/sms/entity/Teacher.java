@@ -45,7 +45,7 @@ public class Teacher {
     @NotNull(message = "Date of Joinning cannot be null")
     private Date date_of_joining;
     private Date date_of_exit;
-    @Column(length = 10000)
+    @Column(length = 100000)
     private String pic;
     private String password;
 

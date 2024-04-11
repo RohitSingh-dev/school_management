@@ -5,13 +5,14 @@ import { useNavigate } from 'react-router-dom';
 const TeacherProfileEdit = () => {
 const [teacher, setTeacher]= useState({});
   const [loading, setLoading]= useState(false);
+  const [file, setFile]= useState("");
   const navigate = useNavigate();
   useEffect(() => {
     if(!loading){
       setLoading(true);
       fetch("/teacher/4",{
         method: "GET",
-        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzExMzgzNjgwLCJpYXQiOjE3MTEyOTcyODB9.ZI72o4DCzmVAqWU2I_s8GfWo5KCLOj_sVw7voy3Hayo'},
+        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEyNzYyNDA5LCJpYXQiOjE3MTI2NzYwMDl9.rgX2Fjda6if1e7_ZQZRLM5hgAHrq2BCxA7sErz6CNeU'},
       }).then(res => res.json()).then(json => setTeacher(json)).catch(err => {console.log(err); setLoading(false)});
     }
   },[]);
@@ -28,7 +29,7 @@ const [teacher, setTeacher]= useState({});
             date_of_birth: teacher.date_of_birth
         }),
         headers: {'Content-Type': 'application/json',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzExMzgzNjgwLCJpYXQiOjE3MTEyOTcyODB9.ZI72o4DCzmVAqWU2I_s8GfWo5KCLOj_sVw7voy3Hayo'},
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEyNzYyNDA5LCJpYXQiOjE3MTI2NzYwMDl9.rgX2Fjda6if1e7_ZQZRLM5hgAHrq2BCxA7sErz6CNeU'},
       });
       let resJSON = await res.text();
       if(res.status===200){
@@ -42,6 +43,27 @@ const [teacher, setTeacher]= useState({});
     catch(err){
       console.log(err);
     }
+  };
+
+  let onPicChange=(e)=> {
+    setFile(e.target.files[0]);
+  };
+  let onPicUpload = async (e)=> {
+    e.preventDefault();
+    const data = new FormData();
+    data.append("file", file);
+    fetch("/teacher/4/upload",{
+      method: "PUT",
+      headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEyNzYyNDA5LCJpYXQiOjE3MTI2NzYwMDl9.rgX2Fjda6if1e7_ZQZRLM5hgAHrq2BCxA7sErz6CNeU'},
+  body: data,
+  }).then(response=> {
+      if(response.ok){
+          alert("Pic Updated Successfully");
+      }
+      else{
+          alert("Pic Upload Failed");
+      }
+  }).catch(err=> {console.err("Error Uploading Files: ", err)})
   };
 
   return (
@@ -80,7 +102,11 @@ const [teacher, setTeacher]= useState({});
       </div>
       <div className='teacherProfileEdit-right'>
         <div className='teacherProfileEdit-right-top'>
-          <img src={`data:image/jpg;base64,${teacher?.pic}`} alt='Profile Pic' />
+          <div className='teacherProfileEdit-right-top-top'><img src={`data:image/jpg;base64,${teacher?.pic}`} alt='Profile Pic' /></div>
+          <div className='teacherProfileEdit-right-top-bottom'>
+            <input type='file' name='file' onChange={onPicChange}></input>
+            <button onClick={onPicUpload}>Update PIC</button>
+          </div>
         </div>
         <div className='teacherProfileEdit-right-bottom'>
           <button onClick={handleSubmit}>Submit</button>

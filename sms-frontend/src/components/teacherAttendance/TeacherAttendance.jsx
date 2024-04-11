@@ -12,7 +12,7 @@ const TeacherAttendance = () => {
         setLoading(true);
         fetch("/attendance/schoolClass/1",{
           method: "GET",
-          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzExMzgzNjgwLCJpYXQiOjE3MTEyOTcyODB9.ZI72o4DCzmVAqWU2I_s8GfWo5KCLOj_sVw7voy3Hayo',
+          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEyNzYyNDA5LCJpYXQiOjE3MTI2NzYwMDl9.rgX2Fjda6if1e7_ZQZRLM5hgAHrq2BCxA7sErz6CNeU',
         User: 4},
         }).then(res => res.json()).then(json => setAttendance(json)).catch(err => {console.log(err); setLoading(false)});
       }
@@ -22,12 +22,12 @@ const TeacherAttendance = () => {
     }
     let onFileUpload= (e)=> {
         e.preventDefault();
+        const data = new FormData();
+        data.append('file',file);
         fetch("/attendance/bulkupload",{
             method: "POST",
-            headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzExMzgzNjgwLCJpYXQiOjE3MTEyOTcyODB9.ZI72o4DCzmVAqWU2I_s8GfWo5KCLOj_sVw7voy3Hayo',
-        'Content-Type': 'multipart/form-data',
-    'Content-Length': '${file.size}'},
-        body: file,
+            headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEyNzYyNDA5LCJpYXQiOjE3MTI2NzYwMDl9.rgX2Fjda6if1e7_ZQZRLM5hgAHrq2BCxA7sErz6CNeU'},
+        body: data,
         }).then(response=> {
             if(response.ok){
                 alert("File Uploaded Successfully");
@@ -73,7 +73,7 @@ const TeacherAttendance = () => {
             </table>
             </div>
             <div className='teacherAttendance-bottom-button'>
-                <input type='file' onChange={onFileChange}></input>
+                <input type='file' name='file' onChange={onFileChange}></input>
                 <button onClick={onFileUpload}>Upload Attendance</button>
             </div>
         </div>
