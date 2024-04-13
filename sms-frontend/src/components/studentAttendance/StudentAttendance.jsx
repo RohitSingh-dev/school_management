@@ -1,23 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './studentAttendance.css';
 import WelcomeBar from '../welcomeBar/WelcomeBar';
 import DashboardFooter from '../dashboardFooter/DashboardFooter';
+import { UserContext } from '../../context/UserContext';
 
 const StudentAttendance = () => {
     const [attendance, setAttendance]= useState({});
     const [loading, setLoading]= useState(false);
+    const user= useContext(UserContext);
     useEffect(() => {
       if(!loading){
         setLoading(true);
         fetch("/attendance/1",{
           method: "GET",
-          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MTI3NjIyMTcsImlhdCI6MTcxMjY3NTgxN30.kj-g2EyT_dbUbBrR8yZHpz6d9_EtmJxq4YQQ6jpCPKQ'},
+          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MTMwMjQwMDIsImlhdCI6MTcxMjkzNzYwMn0.NfI3uyGUunf5lH6fE4epMfcpbSN39jS3inCZadRKGtI'},
         }).then(res => res.json()).then(json => setAttendance(json)).catch(err => {console.log(err); setLoading(false)});
       }
     }, [])
   return (
     <div className='studentAttendancePage'>
-        <div className='studentAttendancePage-welcomeBar'><WelcomeBar /></div>
+        <div className='studentAttendancePage-welcomeBar'><WelcomeBar username={user.user_name}/></div>
         <div className='studentAttendancePage-middle'>
         <div className='studentAttendance'>
             <div className='studentAttendance-top'><h1>Attendance Record</h1></div>

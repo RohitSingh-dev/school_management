@@ -1,27 +1,28 @@
 package com.example.sms.service;
 
-// import java.io.File;
+import java.io.File;
 import java.io.FileNotFoundException;
-// import java.io.FileReader;
+import java.io.FileReader;
 import java.io.IOException;
-// import java.nio.file.Files;
-// import java.sql.Date;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
-// import java.util.UUID;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-// import com.example.sms.entity.Attendance;
 import com.example.sms.entity.Marks;
 import com.example.sms.entity.Result;
-// import com.example.sms.entity.Student;
+import com.example.sms.entity.Student;
+import com.example.sms.entity.Subject;
 import com.example.sms.model.ResultResponse;
 import com.example.sms.model.TeacherResultResponse;
 import com.example.sms.repository.ResultRepository;
-// import com.opencsv.CSVReader;
+import com.example.sms.repository.StudentRepository;
+import com.example.sms.repository.SubjectRepository;
+import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 
 @Service
@@ -29,6 +30,12 @@ public class ResultService {
     
     @Autowired
     private ResultRepository repository;
+
+    @Autowired
+    private StudentRepository studentRepository;
+
+    @Autowired
+    private SubjectRepository subjectRepository;
     
     public void createResult(Result result){
         int total=0;
@@ -85,32 +92,37 @@ public class ResultService {
 
     @SuppressWarnings("resource")
     public String bulkupload(MultipartFile file) throws FileNotFoundException, IOException, CsvValidationException {
-        // String filename= "result_"+ UUID.randomUUID().toString()+ ".csv";
-        // File file2 = new File(filename);
-        // Files.write(file2.toPath(), file.getBytes());
-        // CSVReader csvReader= new CSVReader(new FileReader(filename));
-        // String[] row;
-        // String name;
-        // String parent_name;
-        // String address;
-        // String schoolClass;
-        // int roll_no;
-        // Date date_of_birth;
-        // boolean present;
-        // int student_id;
-        // try{
-        //     while ((row=csvReader.readNext())!= null) {
-        //         name= String.valueOf(row[0]);
-        //         parent_name= String.valueOf(row[1]);
-        //         address= String.valueOf(row[2]);
-        //         schoolClass= String.valueOf(row[3]);
-        //         date_of_birth= Date.valueOf(row[4]);
-                
-        //     }
-        // }catch(Exception e){
-        //     System.out.println(e.getMessage());
-        //     throw e;
-        // }
+        String filename= "result_"+ UUID.randomUUID().toString()+ ".csv";
+        File file2 = new File(filename);
+        Files.write(file2.toPath(), file.getBytes());
+        CSVReader csvReader= new CSVReader(new FileReader(filename));
+        String[] row;
+        boolean passed;
+        int year;
+        int total_marks;
+        int student_id;
+        try{
+            while ((row=csvReader.readNext())!= null) {
+                passed= Boolean.parseBoolean(row[0]);
+                year= Integer.parseInt(row[1]);
+                total_marks= Integer.parseInt(row[4]);
+                student_id= Integer.parseInt(row[5]);
+                Student student= studentRepository.findById(student_id).get();
+                List<Subject> subjects= (List<Subject>) subjectRepository.findAll();
+                List<Marks> marksList= new ArrayList<>();
+                int i=2;
+                for(Subject subject : subjects){
+                    Marks marks= new Marks(Integer.parseInt(row[i]), subject);
+                    marksList.add(marks);
+                    i++;
+                }
+                Result result= new Result(year, total_marks, passed, student, marksList);
+                repository.save(result);
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            throw e;
+        }
         return "Result Uploaded Successfully";
     }
 

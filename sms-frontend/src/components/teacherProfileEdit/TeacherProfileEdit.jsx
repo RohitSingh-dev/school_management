@@ -12,7 +12,7 @@ const [teacher, setTeacher]= useState({});
       setLoading(true);
       fetch("/teacher/4",{
         method: "GET",
-        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEyNzYyNDA5LCJpYXQiOjE3MTI2NzYwMDl9.rgX2Fjda6if1e7_ZQZRLM5hgAHrq2BCxA7sErz6CNeU'},
+        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEzMDI0MTU4LCJpYXQiOjE3MTI5Mzc3NTh9.MwOaSySb55b32qXZSoOcAGjMjd9X5Dw9zQ6skiwXh5I'},
       }).then(res => res.json()).then(json => setTeacher(json)).catch(err => {console.log(err); setLoading(false)});
     }
   },[]);
@@ -29,7 +29,7 @@ const [teacher, setTeacher]= useState({});
             date_of_birth: teacher.date_of_birth
         }),
         headers: {'Content-Type': 'application/json',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEyNzYyNDA5LCJpYXQiOjE3MTI2NzYwMDl9.rgX2Fjda6if1e7_ZQZRLM5hgAHrq2BCxA7sErz6CNeU'},
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEzMDI0MTU4LCJpYXQiOjE3MTI5Mzc3NTh9.MwOaSySb55b32qXZSoOcAGjMjd9X5Dw9zQ6skiwXh5I'},
       });
       let resJSON = await res.text();
       if(res.status===200){
@@ -54,7 +54,7 @@ const [teacher, setTeacher]= useState({});
     data.append("file", file);
     fetch("/teacher/4/upload",{
       method: "PUT",
-      headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEyNzYyNDA5LCJpYXQiOjE3MTI2NzYwMDl9.rgX2Fjda6if1e7_ZQZRLM5hgAHrq2BCxA7sErz6CNeU'},
+      headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEzMDI0MTU4LCJpYXQiOjE3MTI5Mzc3NTh9.MwOaSySb55b32qXZSoOcAGjMjd9X5Dw9zQ6skiwXh5I'},
   body: data,
   }).then(response=> {
       if(response.ok){

@@ -12,7 +12,7 @@ const StudentProfileEdit = () => {
       setLoading(true);
       fetch("/student/11",{
         method: "GET",
-        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MTI3NjIyMTcsImlhdCI6MTcxMjY3NTgxN30.kj-g2EyT_dbUbBrR8yZHpz6d9_EtmJxq4YQQ6jpCPKQ'},
+        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MTMwMjQwMDIsImlhdCI6MTcxMjkzNzYwMn0.NfI3uyGUunf5lH6fE4epMfcpbSN39jS3inCZadRKGtI'},
       }).then(res => res.json()).then(json => setStudent(json)).catch(err => {console.log(err); setLoading(false)});
     }
   }, []);
@@ -33,7 +33,7 @@ const StudentProfileEdit = () => {
             }
         }),
         headers: {'Content-Type': 'application/json',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MTI3NjIyMTcsImlhdCI6MTcxMjY3NTgxN30.kj-g2EyT_dbUbBrR8yZHpz6d9_EtmJxq4YQQ6jpCPKQ'},
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MTMwMjQwMDIsImlhdCI6MTcxMjkzNzYwMn0.NfI3uyGUunf5lH6fE4epMfcpbSN39jS3inCZadRKGtI'},
       });
       let resJSON = await res.text();
       if(res.status===200){
@@ -56,7 +56,7 @@ const StudentProfileEdit = () => {
     e.preventDefault();
     fetch("/student/11/upload",{
       method: "PUT",
-      headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MTI3NjIyMTcsImlhdCI6MTcxMjY3NTgxN30.kj-g2EyT_dbUbBrR8yZHpz6d9_EtmJxq4YQQ6jpCPKQ',
+      headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MTMwMjQwMDIsImlhdCI6MTcxMjkzNzYwMn0.NfI3uyGUunf5lH6fE4epMfcpbSN39jS3inCZadRKGtI',
   'Content-Type': 'multipart/form-data'},
   body: file,
   }).then(response=> {

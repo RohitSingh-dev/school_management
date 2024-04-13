@@ -1,32 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './teacherAttendance.css';
 import { Link } from 'react-router-dom';
 import {WelcomeBar, DashboardFooter} from '../../components';
+import { UserContext } from '../../context/UserContext';
 
 const TeacherAttendance = () => {
     const [attendance, setAttendance]= useState({});
     const [loading, setLoading]= useState(false);
     const [file, setFile]= useState(null);
+    const user= useContext(UserContext);
     useEffect(() => {
       if(!loading){
         setLoading(true);
         fetch("/attendance/schoolClass/1",{
           method: "GET",
-          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEyNzYyNDA5LCJpYXQiOjE3MTI2NzYwMDl9.rgX2Fjda6if1e7_ZQZRLM5hgAHrq2BCxA7sErz6CNeU',
+          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEzMDI0MTU4LCJpYXQiOjE3MTI5Mzc3NTh9.MwOaSySb55b32qXZSoOcAGjMjd9X5Dw9zQ6skiwXh5I',
         User: 4},
         }).then(res => res.json()).then(json => setAttendance(json)).catch(err => {console.log(err); setLoading(false)});
       }
     }, [])
     let onFileChange=(e)=> {
         setFile(e.target.files[0]);
-    }
+    };
     let onFileUpload= (e)=> {
         e.preventDefault();
         const data = new FormData();
         data.append('file',file);
         fetch("/attendance/bulkupload",{
             method: "POST",
-            headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEyNzYyNDA5LCJpYXQiOjE3MTI2NzYwMDl9.rgX2Fjda6if1e7_ZQZRLM5hgAHrq2BCxA7sErz6CNeU'},
+            headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEzMDI0MTU4LCJpYXQiOjE3MTI5Mzc3NTh9.MwOaSySb55b32qXZSoOcAGjMjd9X5Dw9zQ6skiwXh5I'},
         body: data,
         }).then(response=> {
             if(response.ok){
@@ -36,10 +38,10 @@ const TeacherAttendance = () => {
                 alert("File Upload Failed");
             }
         }).catch(err=> {console.err("Error Uploading Files: ", err)})
-    }
+    };
   return (
     <div className='teacherAttendancePage'>
-        <div className='teacherAttendancePage-welcomeBar'><WelcomeBar /></div>
+        <div className='teacherAttendancePage-welcomeBar'><WelcomeBar username={user.user_name}/></div>
         <div className='teacherAttendancePage-middle'>
         <div className='teacherAttendance'>
         <div className='teacherAttendance-top'>

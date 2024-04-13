@@ -31,6 +31,13 @@ public class Marks{
         this.marks_obtained = marks_obtained;
     }
 
+    
+
+    public Marks(int marks_obtained, Subject subject) {
+        this.marks_obtained = marks_obtained;
+        this.subject = subject;
+    }
+
     public int getId() {
         return id;
     }

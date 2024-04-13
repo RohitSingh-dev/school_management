@@ -1,23 +1,47 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './teacherResult.css';
 import { Link } from 'react-router-dom';
 import {WelcomeBar, DashboardFooter} from '../../components';
+import { UserContext } from '../../context/UserContext';
 
 const TeacherResult = () => {
     const [result, setResult]= useState({});
     const [loading, setLoading]= useState(false);
+    const [file, setFile]= useState(null);
+    const user= useContext(UserContext);
     useEffect(() => {
       if(!loading){
         setLoading(true);
         fetch("/result/schoolClass/1",{
           method: "GET",
-          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEyNzYyNDA5LCJpYXQiOjE3MTI2NzYwMDl9.rgX2Fjda6if1e7_ZQZRLM5hgAHrq2BCxA7sErz6CNeU'},
+          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEzMDI0MTU4LCJpYXQiOjE3MTI5Mzc3NTh9.MwOaSySb55b32qXZSoOcAGjMjd9X5Dw9zQ6skiwXh5I'},
         }).then(res => res.json()).then(json => setResult(json)).catch(err => {console.log(err); setLoading(false)});
       }
     }, [])
+
+    let onFileChange=(e)=> {
+        setFile(e.target.files[0]);
+    };
+    let onFileUpload= (e)=> {
+        e.preventDefault();
+        const data = new FormData();
+        data.append('file',file);
+        fetch("/result/bulkupload",{
+            method: "POST",
+            headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEzMDI0MTU4LCJpYXQiOjE3MTI5Mzc3NTh9.MwOaSySb55b32qXZSoOcAGjMjd9X5Dw9zQ6skiwXh5I'},
+        body: data,
+        }).then(response=> {
+            if(response.ok){
+                alert("File Uploaded Successfully");
+            }
+            else{
+                alert("File Upload Failed");
+            }
+        }).catch(err=> {console.err("Error Uploading Files: ", err)})
+    };
   return (
     <div className='teacherResultPage'>
-        <div className='teacherResultPage-welcomeBar'><WelcomeBar /></div>
+        <div className='teacherResultPage-welcomeBar'><WelcomeBar username={user.user_name}/></div>
         <div className='teacherResultPage-middle'>
         <div className='teacherResult'>
         <div className='teacherResult-top'>
@@ -51,8 +75,8 @@ const TeacherResult = () => {
                 </tbody>
             </table>
             <div className='teacherResult-bottom-button'>
-                <input type='file' name='file' onChange=''></input>
-                <button>Upload Result</button>
+                <input type='file' name='file' onChange={onFileChange}></input>
+                <button onClick={onFileUpload}>Upload Result</button>
             </div>
         </div>
     </div>

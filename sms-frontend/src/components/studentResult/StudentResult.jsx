@@ -1,24 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './studentResult.css';
 import WelcomeBar from '../welcomeBar/WelcomeBar';
 import DashboardFooter from '../dashboardFooter/DashboardFooter';
+import { UserContext } from '../../context/UserContext';
 
 const StudentResult = (props) => {
     const [result, setResult]= useState({});
     const [loading, setLoading]= useState(false);
     const [marks, setMarks]= useState([]);
+    const user= useContext(UserContext);
     useEffect(() => {
       if(!loading){
         setLoading(true);
         fetch("/result/1",{
           method: "GET",
-          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MTI3NjIyMTcsImlhdCI6MTcxMjY3NTgxN30.kj-g2EyT_dbUbBrR8yZHpz6d9_EtmJxq4YQQ6jpCPKQ'},
+          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MTMwMjQwMDIsImlhdCI6MTcxMjkzNzYwMn0.NfI3uyGUunf5lH6fE4epMfcpbSN39jS3inCZadRKGtI'},
         }).then(res => res.json()).then(json => {setResult(json); setMarks(json.marks)}).catch(err => {console.log(err); setLoading(false)});
       }
     }, [])
   return (
     <div className='studentResultPage'>
-        <div className='studentResultPage-welcomeBar'><WelcomeBar /></div>
+        <div className='studentResultPage-welcomeBar'><WelcomeBar username={user.user_name}/></div>
         <div className='studentResultPage-middle'>
         <div className='studentResult'>
         <div className='studentResult-top'>

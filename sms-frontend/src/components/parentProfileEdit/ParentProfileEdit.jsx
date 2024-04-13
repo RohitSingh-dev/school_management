@@ -12,7 +12,7 @@ const ParentProfileEdit = () => {
       setLoading(true);
       fetch("/parent/9",{
         method: "GET",
-        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXJlbnQxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEyNzYyNTM4LCJpYXQiOjE3MTI2NzYxMzh9.-VBePuj29h9I5sr04jOkbB6bpV_PfHz7tYwsgIX0Umw'},
+        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXJlbnQxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEzMDI0MzE2LCJpYXQiOjE3MTI5Mzc5MTZ9.zcdQqSPnGQHpI6yc7Sa7rKeRSJXrvCCEvddoJLsAIeI'},
       }).then(res => res.json()).then(json => setParent(json)).catch(err => {console.log(err); setLoading(false)});
     }
     }, []);
@@ -29,7 +29,7 @@ const ParentProfileEdit = () => {
                 contact_info: parent.contact_info
             }),
             headers: {'Content-Type': 'application/json',
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXJlbnQxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEyNzYyNTM4LCJpYXQiOjE3MTI2NzYxMzh9.-VBePuj29h9I5sr04jOkbB6bpV_PfHz7tYwsgIX0Umw'},
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXJlbnQxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEzMDI0MzE2LCJpYXQiOjE3MTI5Mzc5MTZ9.zcdQqSPnGQHpI6yc7Sa7rKeRSJXrvCCEvddoJLsAIeI'},
           });
           let resJSON = await res.text();
           if(res.status===200){
@@ -52,7 +52,7 @@ const ParentProfileEdit = () => {
         e.preventDefault();
         fetch("/parent/9/upload",{
           method: "PUT",
-          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXJlbnQxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEyNzYyNTM4LCJpYXQiOjE3MTI2NzYxMzh9.-VBePuj29h9I5sr04jOkbB6bpV_PfHz7tYwsgIX0Umw',
+          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXJlbnQxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEzMDI0MzE2LCJpYXQiOjE3MTI5Mzc5MTZ9.zcdQqSPnGQHpI6yc7Sa7rKeRSJXrvCCEvddoJLsAIeI',
       'Content-Type': 'multipart/form-data'},
       body: file,
       }).then(response=> {

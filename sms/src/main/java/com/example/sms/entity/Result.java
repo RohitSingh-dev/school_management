@@ -50,6 +50,15 @@ public class Result{
     }
 
     
+
+    public Result(int year, int total_marks, boolean passed, Student student, List<Marks> marks) {
+        this.year = year;
+        this.total_marks = total_marks;
+        this.passed = passed;
+        this.student = student;
+        this.marks = marks;
+    }
+
     public Student getStudent() {
         return student;
     }
