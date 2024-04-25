@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import './loginForm.css';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../context/UserContext';
 
 const LoginForm = (props) => {
   const [email, setEmail]= useState("");
   const [password, setPassword]= useState("");
   const [message, setMessage]= useState("");
+  const user = useContext(UserContext);
   const navigate = useNavigate();
   let handleSubmit = async (e)=> {
     e.preventDefault();
@@ -21,6 +23,7 @@ const LoginForm = (props) => {
       let resJSON = await res.text();
       if(res.status===200){
         console.log(resJSON);
+        user.setCurrentUser(JSON.parse(resJSON));
         setEmail("");
         setPassword("");
         setMessage("Token Received Successfully");

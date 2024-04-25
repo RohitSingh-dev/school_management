@@ -1,15 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './studentProfile.css';
+import { UserContext } from '../../context/UserContext';
+import { Link } from 'react-router-dom';
 
 const StudentProfile = () => {
   const [student, setStudent]= useState({});
   const [loading, setLoading]= useState(false);
+  const user = useContext(UserContext);
   useEffect(() => {
+    console.log("Student Profile");
     if(!loading){
       setLoading(true);
-      fetch("/student/11",{
+      fetch("/student/".concat(user.currentUser?.user_id),{
         method: "GET",
-        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MTMwMjQwMDIsImlhdCI6MTcxMjkzNzYwMn0.NfI3uyGUunf5lH6fE4epMfcpbSN39jS3inCZadRKGtI'},
+        headers: {'Authorization': 'Bearer '.concat(user.currentUser?.user_token)},
       }).then(res => res.json()).then(json => setStudent(json)).catch(err => {console.log(err); setLoading(false)});
     }
   }, [])
@@ -52,7 +56,7 @@ const StudentProfile = () => {
           <img className='studentProfile-right-top-pic' src={`data:image/jpg;base64,${student.pic}`} alt='profilePic'/>
         </div>
         <div className='studentProfile-right-bottom'>
-          <a href='/Profile/edit'><button>Edit /</button></a>
+          <Link to={'/Profile/edit'}><button>Edit /</button></Link>
         </div>
       </div>
     </div>

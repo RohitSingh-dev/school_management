@@ -4,12 +4,12 @@ import { DashboardFooter, ParentProfile, StudentProfile, TeacherProfile, Welcome
 import { UserContext } from '../../context/UserContext';
 
 const ProfilePage = () => {
-  const user= useContext(UserContext);
-  
+  const user = useContext(UserContext);
+  console.log(user);
   return (
     <div className='profilePage'>
-      <div className='profilePage-top'><WelcomeBar username={user.user_name}/></div>
-      <div className='profilePage-middle'>{user.user_role==="TEACHER"?<TeacherProfile /> : user.user_role==="PARENT"? <ParentProfile /> : <StudentProfile />}</div>
+      <div className='profilePage-top'><WelcomeBar username={user.currentUser?.user_name}/></div>
+      <div className='profilePage-middle'>{user.currentUser?.user_role==="TEACHER"?<TeacherProfile /> : user.currentUser?.user_role==="PARENT"? <ParentProfile /> : <StudentProfile />}</div>
       <div className='profilePage-bottom'><DashboardFooter /></div>
     </div>
   )

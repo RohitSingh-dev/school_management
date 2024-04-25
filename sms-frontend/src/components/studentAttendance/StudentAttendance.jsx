@@ -11,10 +11,10 @@ const StudentAttendance = () => {
     useEffect(() => {
       if(!loading){
         setLoading(true);
-        fetch("/attendance/1",{
+        fetch("/attendance/".concat(user.currentUser?.user_id),{
           method: "GET",
-          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MTMwMjQwMDIsImlhdCI6MTcxMjkzNzYwMn0.NfI3uyGUunf5lH6fE4epMfcpbSN39jS3inCZadRKGtI'},
-        }).then(res => res.json()).then(json => setAttendance(json)).catch(err => {console.log(err); setLoading(false)});
+          headers: {'Authorization': 'Bearer '.concat(user.currentUser?.user_token)},
+        }).then(res => res.json()).then(json => setAttendance(json)).catch(err => {console.log("API error ".concat(err)); setLoading(false); alert("Unexpected Error. Try after some time.")});
       }
     }, [])
   return (
@@ -26,11 +26,11 @@ const StudentAttendance = () => {
             <div className='studentAttendance-middle'>
                 <div className='studentAttendance-middle-left'>
                     <p><b>Name : </b>{attendance.name}</p>
-                    <p><b>Parent Name : </b>{attendance.parent_name}</p>
+                    <p><b>Parent Name : </b>{attendance?.parent_name}</p>
                 </div>
                 <div className='studentAttendance-middle-right'>
-                    <p><b>Class : </b>{attendance.schoolClass}</p>
-                    <p><b>Roll. No. : </b>{attendance.roll_no}</p>
+                    <p><b>Class : </b>{attendance?.schoolClass}</p>
+                    <p><b>Roll. No. : </b>{attendance?.roll_no}</p>
                 </div>
             </div>
             <div className='studentAttendance-bottom'>

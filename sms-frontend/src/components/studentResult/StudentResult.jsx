@@ -12,10 +12,10 @@ const StudentResult = (props) => {
     useEffect(() => {
       if(!loading){
         setLoading(true);
-        fetch("/result/1",{
+        fetch("/result/".concat(user.currentUser?.user_id),{
           method: "GET",
-          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MTMwMjQwMDIsImlhdCI6MTcxMjkzNzYwMn0.NfI3uyGUunf5lH6fE4epMfcpbSN39jS3inCZadRKGtI'},
-        }).then(res => res.json()).then(json => {setResult(json); setMarks(json.marks)}).catch(err => {console.log(err); setLoading(false)});
+          headers: {'Authorization': 'Bearer '.concat(user.currentUser?.user_token)},
+        }).then(res => res.json()).then(json => {setResult(json); setMarks(json.marks)}).catch(err => {console.log(err); setLoading(false); alert("Unexpected Error. Try after some time.")});
       }
     }, [])
   return (

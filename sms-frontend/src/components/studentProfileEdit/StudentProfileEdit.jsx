@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './studentProfileEdit.css';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../context/UserContext';
 
 const StudentProfileEdit = () => {
     const [student, setStudent]= useState({});
   const [loading, setLoading]= useState(false);
   const [file, setFile]= useState(null);
+  const user = useContext(UserContext);
   const navigate = useNavigate();
   useEffect(() => {
     if(!loading){
       setLoading(true);
-      fetch("/student/11",{
+      fetch("/student/".concat(user.currentUser?.user_id),{
         method: "GET",
-        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MTMwMjQwMDIsImlhdCI6MTcxMjkzNzYwMn0.NfI3uyGUunf5lH6fE4epMfcpbSN39jS3inCZadRKGtI'},
+        headers: {'Authorization': 'Bearer '.concat(user.currentUser?.user_token)},
       }).then(res => res.json()).then(json => setStudent(json)).catch(err => {console.log(err); setLoading(false)});
     }
   }, []);
@@ -33,7 +35,7 @@ const StudentProfileEdit = () => {
             }
         }),
         headers: {'Content-Type': 'application/json',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MTMwMjQwMDIsImlhdCI6MTcxMjkzNzYwMn0.NfI3uyGUunf5lH6fE4epMfcpbSN39jS3inCZadRKGtI'},
+        'Authorization': 'Bearer '.concat(user.currentUser?.user_token)},
       });
       let resJSON = await res.text();
       if(res.status===200){
@@ -54,11 +56,12 @@ const StudentProfileEdit = () => {
   };
   let onPicUpload = async (e)=> {
     e.preventDefault();
-    fetch("/student/11/upload",{
+    const data= new FormData();
+    data.append("file",file);
+    fetch("/student/".concat(user.currentUser?.user_id,"/upload"),{
       method: "PUT",
-      headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBnbWFpbC5jb20iLCJleHAiOjE3MTMwMjQwMDIsImlhdCI6MTcxMjkzNzYwMn0.NfI3uyGUunf5lH6fE4epMfcpbSN39jS3inCZadRKGtI',
-  'Content-Type': 'multipart/form-data'},
-  body: file,
+      headers: {'Authorization': 'Bearer '.concat(user.currentUser?.user_token)},
+  body: data,
   }).then(response=> {
       if(response.ok){
           alert("Pic Updated Successfully");
@@ -107,7 +110,7 @@ const StudentProfileEdit = () => {
         <div className='studentProfileEdit-right-top'>
           <div className='studentProfileEdit-right-top-top'><img className='studentProfileEdit-right-top-pic' src={`data:image/jpg;base64,${student?.pic}`} alt='profilePic'/></div>
           <div className='studentProfileEdit-right-top-bottom'>
-            <input type='file' onChange={onPicChange}></input>
+            <input type='file' name='file' onChange={onPicChange}></input>
             <button onClick={onPicUpload}>Update PIC</button>
           </div>
         </div>
