@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './teacherProfileEdit.css';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../context/UserContext';
 
 const TeacherProfileEdit = () => {
 const [teacher, setTeacher]= useState({});
   const [loading, setLoading]= useState(false);
   const [file, setFile]= useState("");
   const navigate = useNavigate();
+  const user = useContext(UserContext);
   useEffect(() => {
     if(!loading){
       setLoading(true);
-      fetch("/teacher/4",{
+      fetch("/teacher/".concat(user.currentUser?.user_id),{
         method: "GET",
-        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEzMDI0MTU4LCJpYXQiOjE3MTI5Mzc3NTh9.MwOaSySb55b32qXZSoOcAGjMjd9X5Dw9zQ6skiwXh5I'},
+        headers: {'Authorization': 'Bearer '.concat(user.currentUser?.user_token)},
       }).then(res => res.json()).then(json => setTeacher(json)).catch(err => {console.log(err); setLoading(false)});
     }
   },[]);
@@ -29,11 +31,18 @@ const [teacher, setTeacher]= useState({});
             date_of_birth: teacher.date_of_birth
         }),
         headers: {'Content-Type': 'application/json',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEzMDI0MTU4LCJpYXQiOjE3MTI5Mzc3NTh9.MwOaSySb55b32qXZSoOcAGjMjd9X5Dw9zQ6skiwXh5I'},
+        'Authorization': 'Bearer '.concat(user.currentUser?.user_token)},
       });
       let resJSON = await res.text();
       if(res.status===200){
         console.log(resJSON);
+        user.setCurrentUser(JSON.parse(JSON.stringify({
+          user_name: teacher.name,
+          user_id: user.currentUser?.user_id,
+          user_token: user.currentUser?.user_token,
+          user_role: user.currentUser?.user_role
+        })));
+        console.log(user);
         navigate("/Profile");
       }
       else{
@@ -52,9 +61,9 @@ const [teacher, setTeacher]= useState({});
     e.preventDefault();
     const data = new FormData();
     data.append("file", file);
-    fetch("/teacher/4/upload",{
+    fetch("/teacher/".concat(user.currentUser?.user_id,"/upload"),{
       method: "PUT",
-      headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEzMDI0MTU4LCJpYXQiOjE3MTI5Mzc3NTh9.MwOaSySb55b32qXZSoOcAGjMjd9X5Dw9zQ6skiwXh5I'},
+      headers: {'Authorization': 'Bearer '.concat(user.currentUser?.user_token)},
   body: data,
   }).then(response=> {
       if(response.ok){

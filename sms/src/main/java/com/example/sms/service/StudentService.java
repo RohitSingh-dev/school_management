@@ -78,7 +78,7 @@ public class StudentService {
         studentResponse.setContact_info(student.getContact_info());
         studentResponse.setDate_of_birth(student.getDate_of_birth());
         studentResponse.setDate_of_reg(student.getDate_of_reg());
-        studentResponse.setParent_emailId(student.getParent().getEmailId());
+        studentResponse.setParent_emailId(student.getParent()!=null ? student.getParent().getEmailId(): null);
         studentResponse.setPic(student.getPic());
         return studentResponse;
     }

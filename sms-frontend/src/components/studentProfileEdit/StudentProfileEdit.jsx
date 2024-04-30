@@ -40,6 +40,12 @@ const StudentProfileEdit = () => {
       let resJSON = await res.text();
       if(res.status===200){
         console.log(resJSON);
+        user.setCurrentUser(JSON.parse(JSON.stringify({
+          user_name: student.name,
+          user_id: user.currentUser?.user_id,
+          user_token: user.currentUser?.user_token,
+          user_role: user.currentUser?.user_role
+        })));
         navigate("/Profile");
       }
       else{

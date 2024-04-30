@@ -20,7 +20,7 @@ const StudentResult = (props) => {
     }, [])
   return (
     <div className='studentResultPage'>
-        <div className='studentResultPage-welcomeBar'><WelcomeBar username={user.user_name}/></div>
+        <div className='studentResultPage-welcomeBar'><WelcomeBar username={user.currentUser?.user_name}/></div>
         <div className='studentResultPage-middle'>
         <div className='studentResult'>
         <div className='studentResult-top'>

@@ -12,9 +12,9 @@ const TeacherAttendance = () => {
     useEffect(() => {
       if(!loading){
         setLoading(true);
-        fetch("/attendance/schoolClass/1",{
+        fetch("/attendance/schoolClass/".concat(user.currentUser?.user_id),{
           method: "GET",
-          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEzMDI0MTU4LCJpYXQiOjE3MTI5Mzc3NTh9.MwOaSySb55b32qXZSoOcAGjMjd9X5Dw9zQ6skiwXh5I',
+          headers: {'Authorization': 'Bearer '.concat(user.currentUser?.user_token),
         User: 4},
         }).then(res => res.json()).then(json => setAttendance(json)).catch(err => {console.log(err); setLoading(false)});
       }
@@ -28,7 +28,7 @@ const TeacherAttendance = () => {
         data.append('file',file);
         fetch("/attendance/bulkupload",{
             method: "POST",
-            headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEzMDI0MTU4LCJpYXQiOjE3MTI5Mzc3NTh9.MwOaSySb55b32qXZSoOcAGjMjd9X5Dw9zQ6skiwXh5I'},
+            headers: {'Authorization': 'Bearer '.concat(user.currentUser?.user_token)},
         body: data,
         }).then(response=> {
             if(response.ok){

@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './parentProfile.css';
+import { UserContext } from '../../context/UserContext';
+import { Link } from 'react-router-dom';
 
 const ParentProfile = () => {
     const [parent, setParent]= useState({});
   const [loading, setLoading]= useState(false);
+  const user = useContext(UserContext);
   useEffect(() => {
     if(!loading){
       setLoading(true);
-      fetch("/parent/9",{
+      fetch("/parent/".concat(user.currentUser?.user_id),{
         method: "GET",
-        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXJlbnQxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEzMDI0MzE2LCJpYXQiOjE3MTI5Mzc5MTZ9.zcdQqSPnGQHpI6yc7Sa7rKeRSJXrvCCEvddoJLsAIeI'},
+        headers: {'Authorization': 'Bearer '.concat(user.currentUser?.user_token)},
       }).then(res => res.json()).then(json => setParent(json)).catch(err => {console.log(err); setLoading(false)});
     }
   }, [])
@@ -40,7 +43,7 @@ const ParentProfile = () => {
           <img className='parentProfile-right-top-pic' src={`data:image/jpg;base64,${parent.pic}`} alt='profilePic'/>
         </div>
         <div className='parentProfile-right-bottom'>
-          <a href='/Profile/edit'><button>Edit /</button></a>
+          <Link to={'/Profile/edit'}><button>Edit /</button></Link>
         </div>
       </div>
     </div>

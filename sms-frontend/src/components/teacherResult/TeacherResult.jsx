@@ -12,9 +12,9 @@ const TeacherResult = () => {
     useEffect(() => {
       if(!loading){
         setLoading(true);
-        fetch("/result/schoolClass/1",{
+        fetch("/result/schoolClass/".concat(user.currentUser?.user_id),{
           method: "GET",
-          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEzMDI0MTU4LCJpYXQiOjE3MTI5Mzc3NTh9.MwOaSySb55b32qXZSoOcAGjMjd9X5Dw9zQ6skiwXh5I'},
+          headers: {'Authorization': 'Bearer '.concat(user.currentUser?.user_token)},
         }).then(res => res.json()).then(json => setResult(json)).catch(err => {console.log(err); setLoading(false)});
       }
     }, [])
@@ -28,7 +28,7 @@ const TeacherResult = () => {
         data.append('file',file);
         fetch("/result/bulkupload",{
             method: "POST",
-            headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEzMDI0MTU4LCJpYXQiOjE3MTI5Mzc3NTh9.MwOaSySb55b32qXZSoOcAGjMjd9X5Dw9zQ6skiwXh5I'},
+            headers: {'Authorization': 'Bearer '.concat(user.currentUser?.user_token)},
         body: data,
         }).then(response=> {
             if(response.ok){

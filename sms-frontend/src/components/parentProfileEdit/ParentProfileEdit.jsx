@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './parentProfileEdit.css';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../context/UserContext';
 
 const ParentProfileEdit = () => {
     const [parent, setParent]= useState({});
     const [loading, setLoading]= useState(false);
     const [file, setFile]= useState(null);
+    const user = useContext(UserContext);
     const navigate = useNavigate();
     useEffect(() => {
     if(!loading){
       setLoading(true);
-      fetch("/parent/9",{
+      fetch("/parent/".concat(user.currentUser?.user_id),{
         method: "GET",
-        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXJlbnQxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEzMDI0MzE2LCJpYXQiOjE3MTI5Mzc5MTZ9.zcdQqSPnGQHpI6yc7Sa7rKeRSJXrvCCEvddoJLsAIeI'},
+        headers: {'Authorization': 'Bearer '.concat(user.currentUser?.user_token)},
       }).then(res => res.json()).then(json => setParent(json)).catch(err => {console.log(err); setLoading(false)});
     }
     }, []);
@@ -29,11 +31,17 @@ const ParentProfileEdit = () => {
                 contact_info: parent.contact_info
             }),
             headers: {'Content-Type': 'application/json',
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXJlbnQxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEzMDI0MzE2LCJpYXQiOjE3MTI5Mzc5MTZ9.zcdQqSPnGQHpI6yc7Sa7rKeRSJXrvCCEvddoJLsAIeI'},
+            'Authorization': 'Bearer '.concat(user.currentUser?.user_token)},
           });
           let resJSON = await res.text();
           if(res.status===200){
             console.log(resJSON);
+            user.setCurrentUser(JSON.parse(JSON.stringify({
+              user_name: parent.name,
+              user_id: user.currentUser?.user_id,
+              user_token: user.currentUser?.user_token,
+              user_role: user.currentUser?.user_role
+            })));
             navigate("/Profile");
           }
           else{
@@ -50,9 +58,9 @@ const ParentProfileEdit = () => {
       };
       let onPicUpload = async (e)=> {
         e.preventDefault();
-        fetch("/parent/9/upload",{
+        fetch("/parent/".concat(user.currentUser?.user_id,"/upload"),{
           method: "PUT",
-          headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXJlbnQxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEzMDI0MzE2LCJpYXQiOjE3MTI5Mzc5MTZ9.zcdQqSPnGQHpI6yc7Sa7rKeRSJXrvCCEvddoJLsAIeI',
+          headers: {'Authorization': 'Bearer '.concat(user.currentUser?.user_token),
       'Content-Type': 'multipart/form-data'},
       body: file,
       }).then(response=> {

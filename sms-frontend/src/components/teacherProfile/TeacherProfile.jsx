@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './teacherProfile.css';
+import { UserContext } from '../../context/UserContext';
+import { Link } from 'react-router-dom';
 
 const TeacherProfile = () => {
   const [teacher, setTeacher]= useState({});
   const [loading, setLoading]= useState(false);
+  const user = useContext(UserContext);
   useEffect(() => {
     if(!loading){
       setLoading(true);
-      fetch("/teacher/4",{
+      fetch("/teacher/".concat(user.currentUser?.user_id),{
         method: "GET",
-        headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaXIxMjNAZ21haWwuY29tIiwiZXhwIjoxNzEzMDI0MTU4LCJpYXQiOjE3MTI5Mzc3NTh9.MwOaSySb55b32qXZSoOcAGjMjd9X5Dw9zQ6skiwXh5I'},
+        headers: {'Authorization': 'Bearer '.concat(user.currentUser?.user_token)},
       }).then(res => res.json()).then(json => setTeacher(json)).catch(err => {console.log(err); setLoading(false)});
     }
   },[])
@@ -52,7 +55,7 @@ const TeacherProfile = () => {
           <img src={`data:image/jpg;base64,${teacher.pic}`} alt='Profile Pic' />
         </div>
         <div className='teacherProfile-right-bottom'>
-          <a href='/Profile/edit'><button>Edit /</button></a>
+          <Link to={'/Profile/edit'}><button>Edit /</button></Link>
         </div>
       </div>
     </div>
