@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './welcomeBar.css';
 import logo from '../../assets/bcet_logo.png';
 import { Link, useNavigate } from 'react-router-dom';
+import { UserContext } from '../../context/UserContext';
 
 const WelcomeBar = ({username}) => {
   const navigate= useNavigate();
+  const user = useContext(UserContext);
   let handleClick = ()=>{
+    user.setCurrentUser(null);
     navigate("/");
   };
   return (
