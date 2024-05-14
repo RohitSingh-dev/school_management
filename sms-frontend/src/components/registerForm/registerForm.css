@@ -1,7 +1,7 @@
 .registerForm{
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100%;
     background-image: url(../../assets/compute-ea4c57a4.png);
     background-position: center;
 }
@@ -39,7 +39,7 @@
     text-align: center;
     display: flex;
     justify-content: center;
-    margin-top: 140px;
+    margin: 140px;
 }
 .registerForm-buttons input{
     margin: 20px;
